@@ -72,7 +72,7 @@ function selectAgencia(data){
                 var caso={};
                 var h=0;
                 caso["action"]='procesarCaso';
-                caso["idcaso"]=idcaso;
+                caso["casoid"]=idcaso;
                 
                 for (i=0;i< ncasos;i++){
                    //console.log($($(".btn"+idcaso)[i]).bootstrapSwitch('state'));

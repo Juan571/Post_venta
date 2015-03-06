@@ -173,11 +173,11 @@ class preparedsqls{
                                                         solicitudes_accesorios_inventario.descripcion as descripcion,
                                                         solicitudes_accesorios_inventario.aprobado as aprobado,
                                                         inventario.producto as producto,
-                                                        case  when motivos_reemplazo.motivo is null then 'No_definido' else motivos_reemplazo.motivo end AS motivo,
+                                                        motivos_reemplazo.motivo as motivo,
                                                         seguimientos.observaciones as observaciones
                                                         
                                                         FROM postventa_accesorios.solicitudes_accesorios_inventario 
-                                                        left join motivos_reemplazo on (motivos_reemplazo.id = solicitudes_accesorios_inventario.motivo_id)
+                                                        join motivos_reemplazo on (motivos_reemplazo.id = solicitudes_accesorios_inventario.motivo_id)
                                                         join inventario on (solicitudes_accesorios_inventario.inventario_id = inventario.id)
                                                         left join seguimientos on (seguimientos.solicitudes_accesorios_inventario_id=solicitudes_accesorios_inventario.id)
                                                         where solicitud_accesorios_id =".$idcaso.";");            
