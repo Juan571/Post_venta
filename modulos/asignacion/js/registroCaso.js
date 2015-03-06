@@ -206,7 +206,6 @@ $(window).load(function(){
                         alert('Registro agregado con exito');
                         $('input:text').val('');
                         $('input:checkbox').prop('checked', false);
-                        $('.chkAccesorio').trigger('click');
                     });
                 });
             });
