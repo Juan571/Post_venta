@@ -50,6 +50,41 @@ $(window).load(function(){
             $('#entradaAccesorios').trigger('reveal:close');
         });
     });
+    $('#btnNuevoAccesorio').click(function(){
+        $("#popNuevoAccesorio").dialog({
+            modal: true,
+            buttons: {
+                'Agregar' : function(){
+                    $("#popNuevoAccesorio").dialog("close");
+                    urlDel = url+'?accion=addAccesorio&nombre='+$('#txtNombreAccesorio').val();
+                    console.log(urlDel, $('#txtNombreAccesorio').val());
+                    $.getJSON(urlDel, function(json) {
+                        console.log('addAccesorio', json);
+                        llenarEntradaAccesorios();
+                        strHTMLTabla = '';
+                        strHTMLTabla += '<tr id="tr'+json.id+'">\n';
+                        strHTMLTabla += '\t<td>'+json.id+'</td>\n';
+                        strHTMLTabla += '\t<td>'+$('#txtNombreAccesorio').val()+'</td>\n';
+                        strHTMLTabla += '\t<td>0</td>\n';
+                        strHTMLTabla += '\t<td style="text-align:right">\n';
+                        strHTMLTabla += '\t\t<button data-id="'+json.id+'" class="btn btn-danger btnRemove"><span class="glyphicon glyphicon-remove"></span></button>\n';
+                        strHTMLTabla += '\t\t<button data-id="'+json.id+'" class="btn btn-info btnEdit"><span class="glyphicon glyphicon-edit"></span></button>\n';
+                        strHTMLTabla += '\t</td>\n';
+                        strHTMLTabla += '</tr>\n';
+                        $('#tblAccesorios').append(strHTMLTabla);
+                        tabla.ajax.reload();
+                        botones();
+                        $("#popNuevoAccesorio").dialog("close");
+                    }).fail(function(j,t){
+                        console.log("Error: " + t);
+                    });
+                },
+                'Cancelar': function() {
+                    $("#popNuevoAccesorio").dialog("close");
+                }
+            }
+        });    
+    });
 });
 
 function llenarEntradaAccesorios() {
@@ -68,14 +103,26 @@ function llenarAccesorios(){
         strHTMLTabla += '\t<td>'+i+'</td>\n';
         strHTMLTabla += '\t<td>'+j.producto+'</td>\n';
         strHTMLTabla += '\t<td>'+j.cantidad+'</td>\n';
+        strHTMLTabla += '\t<td style="text-align:right">\n';
+        if (j.cantidad == 0) {
+            strHTMLTabla += '\t\t<button data-id="'+i+'" class="btn btn-danger btnRemove"><span class="glyphicon glyphicon-remove"></span></button>\n';
+        }
+        strHTMLTabla += '\t\t<button data-id="'+i+'" class="btn btn-info btnEdit"><span class="glyphicon glyphicon-edit"></span></button>\n';
+        strHTMLTabla += '\t</td>\n';
         strHTMLTabla += '</tr>\n';
     });
     $('#tblAccesorios').html(strHTMLTabla);
-    $('#tablaAccesorios').dataTable({
-        destroy: true,
+    tabla = $('#tablaAccesorios').dataTable({
         ordering: false,
         language: {
            url: 'http://rec.vtelca.gob.ve/datatables/lang/Spanish.json'
         }
+    });
+    botones();
+}
+
+function botones() {
+    $('.btnRemove').click(function(){
+        
     });
 }

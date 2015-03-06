@@ -138,8 +138,6 @@ $(window).load(function(){
             $.getJSON(urlProcesar, function(json) { // Guardar Equipo
                 console.log('Guardar Equipo', json);
                 equipoId = json.id;
-                //TODO: ESTO SE SACARÁ DE LA BASE DE DATOS
-                //usuarioId = 2; 
                 console.log('&agencia_id='+agenciaId);
                 urlProcesar = url+'?accion=setSolicitud&equipo_id='+equipoId+'&usuario_id='+usuarioId+'&agencia_id='+agenciaId;
                 console.log(urlProcesar);
@@ -168,6 +166,9 @@ $(window).load(function(){
                     $.getJSON(urlProcesar, function(json) { // Guardar Accesorios
                         console.log('Guardar Accesorios', json);
                         alert('Registro agregado con exito');
+                        $('input:text').val('');
+                        $('input:checkbox').prop('checked', false);
+                        $('.chkAccesorio').trigger('click');
                     });
                 });
             });

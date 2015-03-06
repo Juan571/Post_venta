@@ -45,4 +45,16 @@ switch ($accion) {
         }
         print json_encode(array("error" => "0"));
         break;
+    case "addAccesorio":
+        $nombre = $_REQUEST["nombre"];
+        $sql = "INSERT INTO inventario VALUES(null, '$nombre', 1, 0, 1)";
+        $res = $hAccesorios->prepare($sql);
+        $res->execute();
+        print json_encode(array(
+            "mensaje" => "Set Accesorio",
+            "sql" => "$sql",
+            "error" => "0",
+            "id" => $hAccesorios->lastInsertId()
+        ));
+        break;
 }
