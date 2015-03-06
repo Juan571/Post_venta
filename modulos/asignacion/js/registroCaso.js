@@ -169,11 +169,11 @@ $(window).load(function(){
         var arrayMotivoId = [];
         var arrayObservaciones = [];
         $.each(arrayAccesorios, function(i, j){
-            if ($('#selAccesorio'+i).val() == 0) {
-                alert('Debe Escoger Un motivo');
-                return;
-            }
             if ($('#chkAccesorio'+i).prop('checked') === true){
+                if ($('#selAccesorio'+i).val() == 0) {
+                    alert('Debe Escoger Un motivo');
+                    return;
+                }
                 arrayAccesoriosId.push(i);
                 arrayDescripcion.push($('#txtDescripcion'+i).val());
                 arrayMotivoId.push($('#selAccesorio'+i).val());
@@ -206,7 +206,6 @@ $(window).load(function(){
                         alert('Registro agregado con exito');
                         $('input:text').val('');
                         $('input:checkbox').prop('checked', false);
-                        $('.chkAccesorio').trigger('click');
                     });
                 });
             });
