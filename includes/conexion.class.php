@@ -10,7 +10,11 @@
     */
     include_once('./conexion.php');
     
- 
+    define("host",$acc_host); # Direccion ip Base de datos Inventario 
+    define("BD",$acc_name);     # nombre de la base de datos 
+    define("SGBD","mysql");             # Sistema manegador de Base de datos  (mysql, postgresql =  pgsql)
+    define("usuario",$acc_user);     # nombre de usario conexion
+    define("contrasena",$acc_pass);     # contrasena 
     /**
      * Clase Conexion derivada de PDO, contiene metodos  para realizar consultas a BD 
      * los atributos privados se deben definir en parametrosBD.php
