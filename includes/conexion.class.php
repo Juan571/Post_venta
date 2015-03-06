@@ -4,13 +4,15 @@
     * En este archivo se encuentra la Clase conexion con metodos necesarios para conexion a Base de Datos
     *
     * @author Juan Romero  <jromero@vtelca.gob.ve>
-    * @copyright 2014
-    * @subpackage BibilioVtelca
+    * @copyright 2015
+    * 
     * @version 1
     */
-    include_once('./conexion.php');
+    require_once('parametrosBD.php');
+    //require_once('./parametrosBD.php');
     
- 
+    
+    
     /**
      * Clase Conexion derivada de PDO, contiene metodos  para realizar consultas a BD 
      * los atributos privados se deben definir en parametrosBD.php
@@ -37,7 +39,7 @@
          */
 
         public function __construct($sigesp=false){
-          
+    
                  $this->host = host;
                  $this->SGBD = SGBD;
                  $this->usuario = usuario;

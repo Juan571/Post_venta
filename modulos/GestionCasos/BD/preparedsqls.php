@@ -1,7 +1,7 @@
 <?php
 
-require_once("../../../includes/conexion.php"); 
-require_once("../../../includes/conexion.class.php"); 
+
+include_once("../../../includes/conexion.class.php"); 
 
 
 class preparedsqls{
@@ -31,7 +31,7 @@ class preparedsqls{
         public function obtenerCasosGenerales($action,$data){
             $sql=("SELECT * FROM  agencias where agencia_id = $data");            
             $result = $this->con->query($sql,2);
-            
+            $htmlfinal="";
             
             
             foreach ($result as $row => $ofc) {
@@ -260,10 +260,10 @@ class preparedsqls{
                         
                 $html = $html."</div></div>";
                 if ($numeroCasos !=0)
-                $htmlfinal = $htmlfinal.$html;
+                 $htmlfinal = $htmlfinal.$html;
             }
             
-             $result = array("respuesta"=>trim($htmlfinal),"evento"=>$action);
+             $result = array("respuesta"=>$htmlfinal,"evento"=>$action);
              $out = json_encode($result);
             
             echo $out;
