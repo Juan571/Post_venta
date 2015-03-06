@@ -10,3 +10,4 @@ Thumbs.db
 nbproject/
 tmp/*
 includes/conexion.php
+/includes/conexion.php_1.ejemplo
