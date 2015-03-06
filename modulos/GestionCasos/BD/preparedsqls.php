@@ -260,10 +260,10 @@ class preparedsqls{
                         
                 $html = $html."</div></div>";
                 if ($numeroCasos !=0)
-                $htmlfinal = $htmlfinal.$html;
+                 $htmlfinal = $htmlfinal.$html;
             }
             
-             $result = array("respuesta"=>trim($htmlfinal),"evento"=>$action);
+             $result = array("respuesta"=>$htmlfinal,"evento"=>$action);
              $out = json_encode($result);
             
             echo $out;
