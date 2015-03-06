@@ -17,7 +17,6 @@
                     <span class="glyphicon glyphicon-edit"></span>
                     Asignación de accesorios
                 </a></li>
-                <!--
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="fa fa-gear"></i> Administración <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
@@ -32,7 +31,6 @@
                         <li class="disabled"><a href="" target="objMain">Administrar Tecnologías</a></li>
                     </ul>
                 </li>
-                -->
             </ul>
             <ul class="nav navbar-nav navbar-right" style="margin-right:1rem">
                 <li class="dropdown">

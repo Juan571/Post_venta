@@ -35,4 +35,14 @@ switch ($accion) {
         }
         print json_encode($return);
         break;
+    case "setCantidadAccesorios":
+        $id = $_REQUEST["id"];
+        $cant = $_REQUEST["cant"];
+        foreach ($id as $k=>$v) {
+            $sql = "UPDATE inventario set cantidad=cantidad + {$cant[$k]} where id=$v";
+            $res = $hAccesorios->prepare($sql);
+            $res->execute();
+        }
+        print json_encode(array("error" => "0"));
+        break;
 }
