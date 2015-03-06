@@ -1,0 +1,11 @@
+config.php
+clases/configuracion_servidor_servicio.php
+.buildpath
+.settings
+.project
+.metadata/*
+.google_apis/*
+.directory
+Thumbs.db
+nbproject/
+tmp/*

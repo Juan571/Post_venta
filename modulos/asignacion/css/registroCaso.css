@@ -1,0 +1,92 @@
+/*
+Copyright (C) 2015 willicab
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+/* 
+    Created on : 04/03/2015, 01:21:35 PM
+    Author     : willicab
+*/
+
+header {
+    width: calc(100% - 10px);
+    height: 60px;
+    background: url(http://rec.vtelca.gob.ve/img/cintillo-i.png) left no-repeat, 
+                url(http://rec.vtelca.gob.ve/img/cintillo-c.png) center no-repeat, 
+                url(http://rec.vtelca.gob.ve/img/cintillo-d.png) right no-repeat;
+    background-color: #fff;
+    background-size: auto 40px;
+    margin: 5px;
+}
+footer {
+    width: calc(100% - 10px);
+    height: 60px;
+    background: url(http://rec.vtelca.gob.ve/img/pie-pagina.png) center no-repeat;
+    background-color: #fff;
+    background-size: auto 40px;
+    margin: 5px;
+}
+.selectpicker {
+    width:100%; 
+    height: 34px;
+}
+.row {
+    margin-bottom: 10px;
+}
+table {
+    border-collapse:collapse;
+    width: 100%
+}
+tr{
+    border: 1px solid #000;
+}
+#imgTlf {
+    width: 100%;
+}
+h2 {
+    background-color: silver;
+}
+h1, h2, h3, h4 {
+    text-align: center;
+}
+#cvs {
+    border: 1px solid #000;
+}
+@media all and (max-width: 800px) {
+    #cabecera {
+        background: url(http://rec.vtelca.gob.ve/img/cintillo-i.png) left no-repeat,
+            url(http://rec.vtelca.gob.ve/img/cintillo-c.png) right no-repeat;
+        background-color: #fff;
+        background-size: auto 40px;
+    }
+}
+@media all and (max-width: 479px) {
+    #cabecera {
+        background: url(http://rec.vtelca.gob.ve/img/cintillo-c.png) center no-repeat;
+        background-color: #fff;
+        background-size: auto 40px;
+    }
+    h1 {
+        font-size: 3rem;
+    }
+    h2 {
+        font-size: 2.5rem;
+    }
+    h3 {
+        font-size: 2rem;
+    }
+    h4 {
+        font-size: 1.5rem;
+    }
+}
