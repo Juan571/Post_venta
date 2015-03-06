@@ -31,7 +31,7 @@ class preparedsqls{
         public function obtenerCasosGenerales($action,$data){
             $sql=("SELECT * FROM  agencias where agencia_id = $data");            
             $result = $this->con->query($sql,2);
-            
+            $htmlfinal="";
             
             
             foreach ($result as $row => $ofc) {
