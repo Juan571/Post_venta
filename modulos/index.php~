@@ -13,7 +13,7 @@
                     <span class="glyphicon glyphicon-headphones"></span>
                     Solicitud de accesorios
                 </a></li>
-                <li role="presentation"><a href="GestionCasos/Gestion_Casos.php" target="objMain">
+                <li role="presentation"><a href="GestionCasos/Gestion_Casos.php">
                     <span class="glyphicon glyphicon-edit"></span>
                     Asignación de accesorios
                 </a></li>

@@ -12,12 +12,11 @@
     $acc_pass="*s3l3ct#*";
     $acc_name="postventa_accesorios";
 
-    $host_sigesp = '192.168.200.68';
-    $port_sigesp = '5432';
-    $user_sigesp = 'usr_dev';
-    $pass_sigesp = '*s3l3ct#*';
-    $name_sigesp = 'db_vtelca_2014';
-    
+    define("host",$acc_host); # Direccion ip Base de datos Inventario 
+    define("BD",$acc_name);     # nombre de la base de datos 
+    define("SGBD","mysql");             # Sistema manegador de Base de datos  (mysql, postgresql =  pgsql)
+    define("usuario",$acc_user);     # nombre de usario conexion
+    define("contrasena",$acc_pass);     # contrasena 
     
     try{
 	    //Conexion a Territorios
