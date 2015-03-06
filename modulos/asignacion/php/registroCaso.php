@@ -278,7 +278,7 @@ switch ($accion) {
         $res = $hAccesorios->prepare($sql1);
         $res->execute();
         $id = $hAccesorios->lastInsertId();
-        $sql2 = "insert into seguimientos values(null, now(), 1, $id, '', $agencia_id)";
+        $sql2 = "insert into seguimientos values(null, now(), 1, $id, '', $agencia_id, 0)";
         $res = $hAccesorios->prepare($sql2);
         $res->execute();
         print json_encode(array(

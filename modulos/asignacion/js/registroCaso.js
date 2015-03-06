@@ -113,61 +113,100 @@ $(window).load(function(){
         });
     });
     $('#btnProcesarCaso').click(function(){
-        cedula = $('#txtCedula').val();
-        nombres = $('#txtNombres').val();
-        apellidos = $('#txtApellidos').val();
-        direccion = $('#txtDireccion').val().replace('#', '%23');
-        parroquia_id = $('#selParroquias').val();
-        tlfFijo = $('#txtTlfFijo').val();
-        tlfMovil = $('#txtTlfMovil').val();
-        correo = $('#txtCorreo').val();
+        // Datos de Usuario
+        var cedula = $('#txtCedula').val();
+        var nombres = $('#txtNombres').val();
+        var apellidos = $('#txtApellidos').val();
+        var direccion = $('#txtDireccion').val().replace('#', '%23');
+        var parroquia_id = $('#selParroquias').val();
+        var tlfFijo = $('#txtTlfFijo').val();
+        var tlfMovil = $('#txtTlfMovil').val();
+        var correo = $('#txtCorreo').val();
+        // Validaciones de datos personales
+        if (parroquia_id == 0) {
+            alert('Debe Escoger un Estado, Municipio y Parroquia');
+            return;
+        }
+        // Datos de equipo
+        var modeloId = $('#selModelo').val();
+        var colorId = $('#selColor').val();
+        var imei = $('#txtImei').val();
+        var serial = $('#txtSerial').val();
+        var tecnologiaId = $('#selTecnologia').val();
+        var factura = $('#txtFactura').val();
+        var tmp = $('#txtFechaCompra').val().split('/')
+        var fechaCompra = tmp[2]+'-'+tmp[1]+'-'+tmp[0];
+        var operadoraId = $('#selOperadora').val();
+        // validaciones de equipo
+        if (modeloId == 0) {
+            alert('Debe escoger un modelo');
+            return
+        } else if (colorId == 0) {
+            alert('Debe escoger un color');
+            return
+        } else if (imei == '') {
+            alert('Debe colocar el IMEI');
+            return
+        } else if (serial == '') {
+            alert('Debe colocar un serial');
+            return
+        } else if (tecnologiaId == 0) {
+            alert('Debe escoger una tecnología');
+            return
+        } else if (factura == '') {
+            alert('Debe colocar el número de factura');
+            return
+        } else if ($('#txtFechaCompra').val() == '') {
+            alert('Debe colocar la fecha de compra');
+            return
+        } else if (operadoraId == 0) {
+            alert('Debe escoger un operador');
+            return
+        }
+        // Datos Accesorios
+        var arrayAccesoriosId = [];
+        var arrayDescripcion = [];
+        var arrayMotivoId = [];
+        var arrayObservaciones = [];
+        $.each(arrayAccesorios, function(i, j){
+            if ($('#selAccesorio'+i).val() == 0) {
+                alert('Debe Escoger Un motivo');
+                return;
+            }
+            if ($('#chkAccesorio'+i).prop('checked') === true){
+                arrayAccesoriosId.push(i);
+                arrayDescripcion.push($('#txtDescripcion'+i).val());
+                arrayMotivoId.push($('#selAccesorio'+i).val());
+                arrayObservaciones.push($('#txtObservaciones'+i).val());
+            }
+        });
+        var txtAccesoriosId = 'acc[]='+arrayAccesoriosId.join('&acc[]=');
+        var txtDescripciones = 'desc[]='+arrayDescripcion.join('&desc[]=');
+        var txtMotivosId = 'mot[]='+arrayMotivoId.join('&mot[]=');
+        var txtObservaciones = 'obs[]='+arrayObservaciones.join('&obs[]=')
+        
         urlProcesar = url+'?accion=setSolicitante&cedula='+cedula+'&nombres='+nombres+'&apellidos='+apellidos+'&direccion='+direccion+'&parroquia_id='+parroquia_id+'&tlfFijo='+tlfFijo+'&tlfMovil='+tlfMovil+'&correo='+correo;
         $.getJSON(urlProcesar, function(json) { // Guardar Solicitante
             console.log('Guardar Solicitante', json);
             solicitanteId = json.id;
-            modeloId = $('#selModelo').val();
-            colorId = $('#selColor').val();
-            imei = $('#txtImei').val();
-            serial = $('#txtSerial').val();
-            tecnologiaId = $('#selTecnologia').val();
-            factura = $('#txtFactura').val();
-            tmp = $('#txtFechaCompra').val().split('/')
-            fechaCompra = tmp[2]+'-'+tmp[1]+'-'+tmp[0];
-            operadoraId = $('#selOperadora').val();
             urlProcesar = url+'?accion=setEquipo&solicitanteId='+solicitanteId+'&modeloId='+modeloId+'&colorId='+colorId+'&imei='+imei+'&serial='+serial+'&tecnologiaId='+tecnologiaId+'&factura='+factura+'&fechaCompra='+fechaCompra+'&operadoraId='+operadoraId;
             $.getJSON(urlProcesar, function(json) { // Guardar Equipo
                 console.log('Guardar Equipo', json);
                 equipoId = json.id;
-                //TODO: ESTO SE SACARÁ DE LA BASE DE DATOS
-                //usuarioId = 2; 
                 console.log('&agencia_id='+agenciaId);
                 urlProcesar = url+'?accion=setSolicitud&equipo_id='+equipoId+'&usuario_id='+usuarioId+'&agencia_id='+agenciaId;
                 console.log(urlProcesar);
                 $.getJSON(urlProcesar, function(json) { // Guardar Solicitud
                     console.log('Guardar Solicitud', json);
                     solicitudId = json.id;
-                    arrayAccesoriosId = [];
-                    arrayDescripcion = [];
-                    arrayMotivoId = [];
-                    arrayObservaciones = [];
-                    $.each(arrayAccesorios, function(i, j){
-                        if ($('#chkAccesorio'+i).prop('checked') === true){
-                            arrayAccesoriosId.push(i);
-                            arrayDescripcion.push($('#txtDescripcion'+i).val());
-                            arrayMotivoId.push($('#selAccesorio'+i).val());
-                            arrayObservaciones.push($('#txtObservaciones'+i).val());
-                        }
-                    });
-                    txtAccesoriosId = 'acc[]='+arrayAccesoriosId.join('&acc[]=');
-                    txtDescripciones = 'desc[]='+arrayDescripcion.join('&desc[]=');
-                    txtMotivosId = 'mot[]='+arrayMotivoId.join('&mot[]=');
-                    txtObservaciones = 'obs[]='+arrayObservaciones.join('&obs[]=')
-                    //console.log(arrayObservaciones, 'mot[]='+arrayObservaciones.join('&mot[]='));
                     urlProcesar = url+'?accion=setAccesorios&solicitudId='+solicitudId+'&'+txtAccesoriosId+'&'+txtDescripciones+'&'+txtMotivosId+'&'+txtObservaciones;
                     console.log(urlProcesar);
                     $.getJSON(urlProcesar, function(json) { // Guardar Accesorios
                         console.log('Guardar Accesorios', json);
                         alert('Registro agregado con exito');
+                        $('input:text').val('');
+                        $('input:checkbox').prop('checked', false);
+                        $('.chkAccesorio').trigger('click');
                     });
                 });
             });
