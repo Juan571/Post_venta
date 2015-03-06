@@ -169,11 +169,11 @@ $(window).load(function(){
         var arrayMotivoId = [];
         var arrayObservaciones = [];
         $.each(arrayAccesorios, function(i, j){
-            if ($('#selAccesorio'+i).val() == 0) {
-                alert('Debe Escoger Un motivo');
-                return;
-            }
             if ($('#chkAccesorio'+i).prop('checked') === true){
+                if ($('#selAccesorio'+i).val() == 0) {
+                    alert('Debe Escoger Un motivo');
+                    return;
+                }
                 arrayAccesoriosId.push(i);
                 arrayDescripcion.push($('#txtDescripcion'+i).val());
                 arrayMotivoId.push($('#selAccesorio'+i).val());
@@ -206,7 +206,8 @@ $(window).load(function(){
                         alert('Registro agregado con exito');
                         $('input:text').val('');
                         $('input:checkbox').prop('checked', false);
-                        $('.chkAccesorio').trigger('click');
+                        $('.txtAccesorio').prop('disabled', true);
+                        $('.selAccesorio').prop('disabled', true);
                     });
                 });
             });
@@ -261,10 +262,10 @@ function lineaAccesorio(id, accesorio){
     strHTML += '        </label>\n';
     strHTML += '    </div>\n';
     strHTML += '    <div class="col-md-3">\n';
-    strHTML += '        <input type="text" class="form-control" placeholder="Descripción" id="txtDescripcion'+id+'" disabled>\n';
+    strHTML += '        <input type="text" class="form-control txtAccesorio" placeholder="Descripción" id="txtDescripcion'+id+'" disabled>\n';
     strHTML += '    </div>\n';
     strHTML += '    <div class="col-md-3">\n';
-    strHTML += '        <select class="selectpicker" id="selAccesorio'+id+'" disabled>\n';
+    strHTML += '        <select class="selectpicker selAccesorio" id="selAccesorio'+id+'" disabled>\n';
     strHTML += '            <option value="0">Motivo de Reemplazo</option>\n';
     $.each(arrayMotivos, function(i, j){
         strHTML += '            <option value="'+i+'">'+j+'</option>\n';
@@ -272,7 +273,7 @@ function lineaAccesorio(id, accesorio){
     strHTML += '        </select>\n';
     strHTML += '    </div>\n';
     strHTML += '    <div class="col-md-4">\n';
-    strHTML += '        <input type="text" class="form-control" placeholder="Observaciones" id="txtObservaciones'+id+'" disabled>\n';
+    strHTML += '        <input type="text" class="form-control txtAccesorio" placeholder="Observaciones" id="txtObservaciones'+id+'" disabled>\n';
     strHTML += '    </div>\n';
     strHTML += '</div>\n';
     return strHTML;
