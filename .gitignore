@@ -9,3 +9,4 @@ clases/configuracion_servidor_servicio.php
 Thumbs.db
 nbproject/
 tmp/*
+includes/conexion.php
