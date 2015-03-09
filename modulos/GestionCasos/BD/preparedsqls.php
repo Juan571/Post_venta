@@ -72,14 +72,14 @@ class preparedsqls{
                         join operadoras on (equipos.operadora_id = operadoras.id)
                         join tecnologias on (equipos.tecnologia_id = tecnologias.id)
                         
-                        where agencias.id = ".$ofc['id'].";");            
+                        where agencias.id = ".$ofc['id']." and tipo_estado_id < 3;");            
                         $casos = $this->con->query($sql,2);
                         $numeroCasos = 0;
                         foreach ($casos as $ncasos => $datosCasos) {
                             $idcaso=$datosCasos['id'];
                             $numeroCasos ++;
                             $html=$html."
-                            <div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>
+                            <div class='panel-group panel$idcaso' id='accordion' role='tablist' aria-multiselectable='true'>
                                 <div class='panel panel-danger'>
                                     <div class='panel-heading' role='tab' id='headingOne'>
                                         <h4 style='text-align:left;' class='panel-title'>

@@ -39,6 +39,8 @@
            
             $sql = ("INSERT INTO seguimientos VALUES (null,now(), 3, $idcaso, 'despachado','$idagencia','0');"); 
             $ejecuta->ejecutar($sql,$action);
+            $sql = ("UPDATE solicitudes_accesorios SET tipo_estado_id=3 WHERE id=$idcaso"); 
+            $ejecuta->ejecutar($sql,$action);
             $result = array("respuesta"=>$idcaso,"evento"=>$action);
             
             echo json_encode($result);
@@ -48,20 +50,34 @@
         case $action === 'procesarCaso': 
                 $accesorios=$_POST['accesorios'];    
                 $idcaso = $_POST['casoid'];
+                $todosAccAprob = false;
             
                 for ($i=0;$i<count($accesorios);$i++){
                     $id = $accesorios[$i][1];
                     $aprobd = $accesorios[$i][0];
                     $obser = $accesorios[$i][2];
                      
-                    $sql = ("INSERT INTO seguimientos VALUES (null,now(), 2, $idcaso, '$obser','0','$id');"); 
-                        $ejecuta->ejecutar($sql,$action);
                         
                     if($aprobd=='true'){
+                        $todosAccAprob = true;
+                        $sql = ("INSERT INTO seguimientos VALUES (null,now(), 2, $idcaso, '$obser','0','$id');"); 
+                        $ejecuta->ejecutar($sql,$action);
                         $sql = ("UPDATE solicitudes_accesorios_inventario SET aprobado=1 WHERE id=$id"); 
                         $ejecuta->ejecutar($sql,$action);
                     }
+                    else{
+                        $sql = ("INSERT INTO seguimientos VALUES (null,now(), 6, $idcaso, '$obser','0','$id');"); 
+                        $ejecuta->ejecutar($sql,$action);                        
+                    }
                     
+                }
+                if ($todosAccAprob){
+                    $sql = ("UPDATE solicitudes_accesorios SET tipo_estado_id=2 WHERE id=$idcaso"); 
+                    $ejecuta->ejecutar($sql,$action);
+                }
+                else{
+                    $sql = ("UPDATE solicitudes_accesorios SET tipo_estado_id=6 WHERE id=$idcaso"); 
+                    $ejecuta->ejecutar($sql,$action);
                 }
                 $result = array("respuesta"=>$idcaso,"evento"=>$action);
                 echo json_encode($result);

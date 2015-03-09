@@ -178,7 +178,8 @@ function ajax(datos,tipodato){
                         
                  case "despacharAcc":
                         console.log(resp)
-                       $("#divdesp"+resp.respuesta).hide();
+                       $(".panel"+resp.respuesta).hide("slow");
+                       
                             alert("Despachado exitosamente")
                         
                         
