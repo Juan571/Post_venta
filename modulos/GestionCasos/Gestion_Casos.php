@@ -124,7 +124,7 @@ and open the template in the editor.
         <script>
             $(document).ready(function () {
                 cargarTablas("obtenerAgencias", "", "#tabla_ofc", null, [0,2,3],"./BD/swtichprepared.php");
-                
+                eventosgloblaes();
                 // $('.bootstrap-switch-handle-on').attr("text","");
             });
         </script>

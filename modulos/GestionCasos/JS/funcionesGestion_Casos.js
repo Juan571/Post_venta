@@ -9,11 +9,7 @@ function eventosgloblaes(){
             }); 
     
 }
-function procesarAccesrios(boton){
-     
-    alert(boton.attr('class'));
-    //$(btnEmpleado).on("click",function () {
-}
+
 function selectAgencia(data){
     datos={};
     datos["action"]="obtenerCasosGenerales";
