@@ -178,7 +178,7 @@ function ajax(datos,tipodato){
                         
                  case "despacharAcc":
                         console.log(resp)
-                       $(".panel"+resp.respuesta).hide("slow");
+                       $(".panel"+resp.respuesta).hide();
                        
                             alert("Despachado exitosamente")
                         
