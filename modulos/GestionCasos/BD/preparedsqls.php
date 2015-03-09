@@ -300,16 +300,14 @@ class preparedsqls{
         public function ejecutar($sql,$evento){
      			
                         $res= $this->con->query($sql);
-                        $respuesta = json_decode($res);
-                        
+                        //$respuesta = json_decode($res);
+                        /*
                         if($respuesta->{'error'}){
-                            
-                            $result = array("respuesta"=>$respuesta,"evento"=>$evento);
-                            
+                            $result = array("respuesta"=>$respuesta,"evento"=>$evento);                            
                         }   
                         else{
+                        }*/
                             $result = array("respuesta"=>"Registrado","evento"=>$evento);
-                        }
                         return json_encode($result);
                         
      		
