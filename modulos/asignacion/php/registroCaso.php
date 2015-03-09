@@ -274,7 +274,7 @@ switch ($accion) {
         $equipo_id = $_REQUEST["equipo_id"];
         $usuario_id = $_REQUEST["usuario_id"];
         $agencia_id = $_REQUEST["agencia_id"];
-        $sql1 = "insert into solicitudes_accesorios values(null, $equipo_id, now(), $usuario_id)";
+        $sql1 = "insert into solicitudes_accesorios values(null, $equipo_id, now(), $usuario_id, 1)";
         $res = $hAccesorios->prepare($sql1);
         $res->execute();
         $id = $hAccesorios->lastInsertId();
