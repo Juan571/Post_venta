@@ -129,7 +129,12 @@ function desabilitarElementos(caso){
         $("#divdesp"+caso).show();
     }
 }
-
+function cargarBadges(){
+    cargar={};
+    cargar["action"]="cargarBadges";
+    //console.log(casosproc);
+    ajax(cargar);
+}
 function ajax(datos,tipodato){
     
     
@@ -148,7 +153,7 @@ function ajax(datos,tipodato){
           //alert("Error");
         },
         success:function(resp, textStatus, jqXHR){
-          //         console.log(resp) ;
+                //console.log(resp) ;
           
                 switch (resp.evento) {
                  
@@ -176,20 +181,35 @@ function ajax(datos,tipodato){
                     
                         break;
                         
-                 case "despacharAcc":
-                        console.log(resp)
-                       $(".panel"+resp.respuesta).hide();
-                       
-                            alert("Despachado exitosamente")
-                        
-                        
-                    
+                case "cargarBadges":
+                        //console.log(resp.respuesta);
+                        $.each(resp.respuesta,function(key,val){
+                            //console.log(val)
+                            $.each(val,function(keys,valor){
+                                console.log(keys+"-->"+valor);
+                            });
+                            $("#totalCasos").text(val.totalCasos);
+                            $("#casosPendientes").text(val.casosPendientes);
+                            $("#casosProcesados").text(val.casosProcesados);
+                            $("#casosDespachados").text(val.casosDespachados);
+                            $("#casosRechazados").text(val.casosDenegados);
+                                
+                        });
                         break;
+                        
+                case "despacharAcc":
+                        console.log(resp);
+                        $(".panel"+resp.respuesta).hide();                       
+                        alert("Despachado exitosamente");
+                        cargarBadges()
+                        break;
+                        
                 case "procesarCaso":
-                        //console.log(resp)
                         desabilitarElementos(resp.respuesta);
-                    
+                        alert("Procesado Exitosamente");//console.log(resp)
+                        cargarBadges();
                         break;
+                
                 case "obtenerCasosGenerales":
                         $("#agentes").html("")
                         if (resp.respuesta.length==0){
@@ -200,12 +220,13 @@ function ajax(datos,tipodato){
                             $("#agentes").html(resp.respuesta);
                         }
                         
-                    
+                        cargarBadges();
                         break;
                 
                 default:
                         break;
                 }
+               
                 if (resp.hasOwnProperty("casosproc")){
                 $.each(resp.casosproc,function(key,val){
                        // console.log(key+"->"+val);
@@ -215,13 +236,7 @@ function ajax(datos,tipodato){
                    });
                 // console.log(resp);    
                 }
-                if (resp.hasOwnProperty("Materiales")){
-                   $.each(resp.Materiales,function(key,val){
-                       // console.log(key+"->"+val);
-                        $("#tipo_mat").append("<option data-text="+val+" value="+key+">"+val+"</option>");
-                   });   
-                   $("#tipo_mat").append("<option value=-1 >AGREGAR TIPO</option>");
-                }
+                
         }
     });
 }  

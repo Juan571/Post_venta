@@ -16,6 +16,39 @@ class preparedsqls{
             $this->con = new conexion();		
 	}
 	
+        public function cargarBadges($action){
+            $arr = array();
+            $sql=("SELECT count(*) as totalCasos FROM postventa_accesorios.solicitudes_accesorios;");            
+            $result = $this->con->query($sql,2);
+            foreach ($result as $row => $valor) {
+                $arr[]  = $valor;							
+            }
+            $sql=("SELECT count(*) as casosPendientes FROM postventa_accesorios.solicitudes_accesorios where tipo_estado_id = 1;");            
+            $result = $this->con->query($sql,2);
+            foreach ($result as $row => $valor) {
+                $arr[]  = $valor;							
+            }
+            $sql=("SELECT count(*) as casosDespachados FROM postventa_accesorios.solicitudes_accesorios where tipo_estado_id = 3;");            
+            $result = $this->con->query($sql,2);
+            foreach ($result as $row => $valor) {
+                $arr[]  = $valor;							
+            }
+            $sql=("SELECT count(*) as casosProcesados FROM postventa_accesorios.solicitudes_accesorios where tipo_estado_id = 2;");            
+            $result = $this->con->query($sql,2);
+            foreach ($result as $row => $valor) {
+                $arr[]  = $valor;							
+            }
+            $sql=("SELECT count(*) as casosDenegados FROM postventa_accesorios.solicitudes_accesorios where tipo_estado_id = 6;");            
+            $result = $this->con->query($sql,2);
+            foreach ($result as $row => $valor) {
+                $arr[]  = $valor;							
+            }
+            $result = array("respuesta"=>$arr,"evento"=>$action);
+            //$arr["totalcassos"]=$result;
+            $out = json_encode($result);
+            //$this->desconectarSigesp();
+            echo $out;
+        }
         public function obtenerAgencias($data){
             $sql=("SELECT * FROM  agencias where id = agencia_id");
             
@@ -292,7 +325,7 @@ class preparedsqls{
             }
             $arr["casosproc"]  = $arr2;
             $out = json_encode($arr);
-            //$this->desconectarSigesp();
+            
             echo $out;
         }
 

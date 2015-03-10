@@ -29,6 +29,9 @@ and open the template in the editor.
 
         <title>Gestion de Casos</title>
         <style>
+            #hola:hover { 
+                background-color: yellow;
+            }
             header   {
                 width: calc(100% - 10px);
                 height: 60px;
@@ -125,7 +128,11 @@ and open the template in the editor.
             $(document).ready(function () {
                 cargarTablas("obtenerAgencias", "", "#tabla_ofc", null, [0,2,3],"./BD/swtichprepared.php");
                 eventosgloblaes();
-                // $('.bootstrap-switch-handle-on').attr("text","");
+                cargarBadges();
+            $( ".listaResult" ).hover(function() {
+              $(".active").removeClass("active");
+              $(this).parent().addClass("active");
+            });
             });
         </script>
     </head>
@@ -144,7 +151,16 @@ and open the template in the editor.
                     </table>                          
                 </div>
             </div>
-
+            <div style="margin-left: 9%;">
+                <ul  class="nav nav-pills">
+                    <li class="list-inline-item"><a class='listaResult'  ><span class="badge pull-right"><strong id="totalCasos">12</strong></span>Total Casos Registrados</a></li>
+                    <li class="list-inline-item"><a class='listaResult'  ><span class="badge pull-right"><strong id="casosPendientes">12</strong></span> Casos Pendientes</a></li>
+                    <li class="list-inline-item"><a class='listaResult'  ><span class="badge pull-right"><strong id="casosProcesados">12</strong></span> Casos Procesados</a></li>
+                    <li class="list-inline-item"><a class='listaResult'  ><span class="badge pull-right"><strong id="casosDespachados">23</strong></span> Casos Despachados</a></li>                       
+                    <li class="list-inline-item"><a class='listaResult'  ><span class="badge pull-right"><strong id="casosRechazados">23</strong></span> Casos Rechazados</a></li>                       
+                </ul>
+            </div>    
+            <br>
             <div style="" class="panel panel-default" align="center">
                 <div style="text-align: left" class="panel-heading">
                     <h4 style='text-align: left'> <strong>Agentes autorizados Asociados a la Oficina Comercial</strong> Seleccione el Caso.</h4>

@@ -32,6 +32,9 @@
         case $action === 'obtenerCasosGenerales': 
             $ejecuta->obtenerCasosGenerales($action,$_POST['data']);
         break;
+        case $action === 'cargarBadges': 
+            $ejecuta->cargarBadges($action);
+        break;
     
         case $action === 'despacharAcc':
             $idagencia=$_POST['agenciiaid'];    
