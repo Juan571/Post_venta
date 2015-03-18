@@ -32,30 +32,9 @@ and open the template in the editor.
             #hola:hover { 
                 background-color: yellow;
             }
-            header   {
-                width: calc(100% - 10px);
-                height: 60px;
-                background: url(http://rec.vtelca.gob.ve/img/cintillo-i.png) left no-repeat, 
-                    url(http://rec.vtelca.gob.ve/img/cintillo-c.png) center no-repeat, 
-                    url(http://rec.vtelca.gob.ve/img/cintillo-d.png) right no-repeat;
-                background-color: #fff;
-                background-size: auto 40px;
-                margin: 5px;
-            }
+            
             label,p {
                 display: inline-block;
-            }
-            footer {
-                width: calc(100% - 10px);
-                height: 60px;
-                background: url(http://rec.vtelca.gob.ve/img/pie-pagina.png) center no-repeat;
-                background-color: #fff;
-                background-size: auto 40px;
-                margin: 5px;
-            }
-            .page-header{
-                margin-bottom: 0%;
-                margin-top: 0%;
             }
             .selectpicker {
                 width:100%; 
