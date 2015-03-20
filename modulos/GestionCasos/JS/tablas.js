@@ -45,15 +45,14 @@ function crearTh(datos,tabla){
 function cargarTablas(action,data,tabla,cambiarDiseno,columnasvisibles,url,urlIdioma){
   var header=[];
    datos = {
-               action          : action, 
+               action          : action,
+               accion          : action,
                data            : data
           }
   var tabla=tabla;
-  if(urlIdioma==null){
-    urlIdioma="./";
-  }else{
-    urlIdioma="../";
-  }
+    if(urlIdioma==null){
+        urlIdioma="./";
+    }
  if(url==null){
     dir="./BD/swtichprepared.php";
   }else{

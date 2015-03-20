@@ -1,32 +1,62 @@
 var url = 'php/inventario.php';
 var arrayAccesorios;
+var arrayModelos;
+var arrayInventario;
 var tabla;
 $(window).load(function(){
+
+    cargarTablas("getInventario", "", "#tablaAccesorios", null, [0,1,2],"../administracion/php/inventario.php","../GestionCasos/");
     $.getJSON(url+'?accion=getAccesorios', function(json) { // Obtener Accesorios
         arrayAccesorios = json
-        console.log('getAccesorios', arrayAccesorios);
-        llenarAccesorios();
+        // console.log('getAccesorios', arrayAccesorios);
+        //llenarAccesorios();
         llenarEntradaAccesorios();
     }).fail(function(){
         console.log('fail');
     });
-    $('#selAccesorios').change(function(){
-        id = $(this).val();
+    $.getJSON(url+'?accion=getModelos', function(json) { // Obtener Accesorios
+        arrayModelos = json;
+        //console.log('getModelos', arrayModelos);
+        //llenarAccesorios();
+        llenarEntradaModelos();
+    }).fail(function(){
+        console.log('fail');
+    });
+
+
+    $('#btnAgregarInvModelo').click(function(){
+        id = $("#selAccesorios option:selected").val();
+        idmodelo = $("#selModelos option:selected").val();
         accesorio = $("#selAccesorios option:selected").text();
-        if (id == 0) {return;}
-        strHTML = '\t<tr id="trAccesorios'+id+'" class="trAccesorios" data-id="'+id+'">\n';
+        modelo = $("#selModelos option:selected").text();
+        existe = false;
+        if ((id*idmodelo) == 0) {
+            return;
+        }
+        for (i = 0; i < $(tblEntradaAccesorios.children).length; i++) {
+            if( $(tblEntradaAccesorios.children[i]).attr("data-id")==(id+idmodelo)) existe=true;
+            //console.log($(tblEntradaAccesorios.children[i]).attr("data-id"))
+        }
+        if (existe) {
+            alert("Este accesorio ya fue agregado, modifique la cantidad en la tabla..");
+            return;
+        }
+
+
+        strHTML = '\t<tr id="trAccesorios'+id+idmodelo+'" class="trAccesorios" data-id="'+id+idmodelo+'">\n';
         strHTML += '\t\t<td>'+id+'</td>\n';
         strHTML += '\t\t<td id="tdAccesorio'+id+'">'+accesorio+'</td>\n';
-        strHTML += '\t\t<td><input type="text" class="form-control" id="txtAccesoriosCantidad'+id+'" value="0"></td>\n';
+        strHTML += '\t\t<td id="tdAccesorio'+id+'">'+modelo+'</td>\n';
+        strHTML += '\t\t<td><input type="text" class="form-control" id="txtAccesoriosCantidad'+id+'" placeholder="Cantidad"></td>\n';
         strHTML += '\t\t<td><button class="btn btn-danger btnEliminar" data-id="'+id+'"><span class="glyphicon glyphicon-remove"></button></td>\n';
         strHTML += '\t</tr>\n';
         $('#tblEntradaAccesorios').append(strHTML);
-        $('#selAccesorios option[value="'+id+'"]').remove();
+
         $('.btnEliminar').click(function(){
-            id = $(this).attr('data-id');
+            id = $(this).attr('id');
             accesorio = $('#tdAccesorio'+id).text();
             $('#trAccesorios'+id).remove();
-            $('#selAccesorios').append('\t<option value="'+id+'">'+accesorio+'</option>\n');
+            // $('#selAccesorios').append('\t<option value="'+id+'">'+accesorio+'</option>\n');
         });
     });
     $('#btnCancelarEntradaAccesorios').click(function(){
@@ -83,7 +113,7 @@ $(window).load(function(){
                     $("#popNuevoAccesorio").dialog("close");
                 }
             }
-        });    
+        });
     });
 });
 
@@ -95,34 +125,21 @@ function llenarEntradaAccesorios() {
     $('#selAccesorios').html(strHTMLSelect);
     $('#tblEntradaAccesorios').text('');
 }
+function llenarEntradaModelos() {
+    strHTMLSelect = '\t<option value="0">Seleccione un Modelo</option>\n';
+    $.each(arrayModelos, function(i, j){
 
+        strHTMLSelect += '\t<option value="'+i+'">'+ j.descrip+"("+j.modelo+")"+'</option>\n';
+    });
+    $('#selModelos').html(strHTMLSelect);
+
+}
 function llenarAccesorios(){
-    strHTMLTabla = '';
-    $.each(arrayAccesorios, function(i, j){
-        strHTMLTabla += '<tr>\n';
-        strHTMLTabla += '\t<td>'+i+'</td>\n';
-        strHTMLTabla += '\t<td>'+j.producto+'</td>\n';
-        strHTMLTabla += '\t<td>'+j.cantidad+'</td>\n';
-        strHTMLTabla += '\t<td style="text-align:right">\n';
-        if (j.cantidad == 0) {
-            strHTMLTabla += '\t\t<button data-id="'+i+'" class="btn btn-danger btnRemove"><span class="glyphicon glyphicon-remove"></span></button>\n';
-        }
-        strHTMLTabla += '\t\t<button data-id="'+i+'" class="btn btn-info btnEdit"><span class="glyphicon glyphicon-edit"></span></button>\n';
-        strHTMLTabla += '\t</td>\n';
-        strHTMLTabla += '</tr>\n';
-    });
-    $('#tblAccesorios').html(strHTMLTabla);
-    tabla = $('#tablaAccesorios').dataTable({
-        ordering: false,
-        language: {
-           url: 'http://rec.vtelca.gob.ve/datatables/lang/Spanish.json'
-        }
-    });
-    botones();
+    cargarTablas("getInventario", "", "#tablaAccesorios", null, [0,1,2],"../administracion/php/inventario.php","../GestionCasos/");
 }
 
 function botones() {
     $('.btnRemove').click(function(){
-        
+
     });
 }
