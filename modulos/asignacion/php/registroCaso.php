@@ -299,9 +299,6 @@ switch ($accion) {
             $sql = "insert into solicitudes_accesorios_inventario values(null, $solicitudId, $v, '{$descripciones[$k]}', {$motivos[$k]}, '{$observaciones[$k]}', 0)";
             $res = $hAccesorios->prepare($sql);
             $res->execute();
-            $sql = "update inventario set cantidad = cantidad - 1 where id = $v";
-            $res = $hAccesorios->prepare($sql);
-            $res->execute();
         }
         print json_encode(array(
             "mensaje" => "set Accesorios",
