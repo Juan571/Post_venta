@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("#contCaso").hide();
+    //$("#contCaso").hide();
     $("#buscarCaso").click(function(){
         idCaso=$("#idCaso").val();
         $.getJSON('BD/consulta.php?caso='+idCaso, function(json) {
