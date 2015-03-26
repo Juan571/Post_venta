@@ -59,7 +59,7 @@ $(window).load(function(){
         //llenarAccesorios();
         llenarEntradaModelos();
     }).fail(function(aa){
-        console.log('fail'+aa);
+        console.log(aa);
     });
 
     $('#selModelos').change(function(){
