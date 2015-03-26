@@ -2,6 +2,34 @@ var url = 'php/registroCaso.php';
 var arrayEstados, arrayMunicipios, arrayParroquias, arrayModelos, arrayColores;
 var arrayTecnologias, arrayOperadoras, arrayAccesorios, arrayMotivos;
 $(window).load(function(){
+    $('.txtFecha').datetimepicker({
+        pickTime: false,
+        format:'DD/MM/YYYY'
+    });
+    $("#selParroquias").selectpicker({
+        size:4
+    });
+    $("#selEstados").selectpicker({
+        size:4
+    });
+    $("#selMunicipios").selectpicker({
+        size:4
+    });
+    $("#selTecnologia").selectpicker({
+        size:4
+    });
+    $("#selModelo").selectpicker({
+        size:4
+    });
+    $("#selColor").selectpicker({
+        size:4
+    });
+    $("#selOperadora").selectpicker({
+        size:4
+    });
+    $("#selParroquias").selectpicker("refresh");
+    $("#selEstados").selectpicker("refresh");
+    $("#selMunicipios").selectpicker("refresh");
     $.getJSON(url+'?accion=getEstados', function(json) { // Obtener Estados
         arrayEstados = json;
         console.log('arrayEstados', arrayEstados);
@@ -16,6 +44,9 @@ $(window).load(function(){
                     strHTML += '\t<option value="'+i+'">'+j+'</option>\n';
                 })
                 $('#selEstados').html(strHTML);
+                $("#selEstados").selectpicker("refresh");
+                $("#selParroquias").selectpicker("refresh");
+                $("#selMunicipios").selectpicker("refresh");
                 $('#selEstados').change(function(){
                     idEstado = $(this).val();
                     $('#selParroquias').html('<option value="0">Parroquia</option>');
@@ -26,6 +57,9 @@ $(window).load(function(){
                         }
                     });  
                     $('#selMunicipios').html(strHTML);
+                    $("#selMunicipios").selectpicker("refresh");
+                    $("#selEstados").selectpicker("refresh");
+                    $("#selParroquias").selectpicker("refresh");
                     $('#selMunicipios').change(function(){
                         idMunicipio = $(this).val();
                         strHTML = '<option value="0">Seleccione una Parroquia</option>';
@@ -35,6 +69,7 @@ $(window).load(function(){
                             }
                         });  
                         $('#selParroquias').html(strHTML);
+                        $("#selParroquias").selectpicker("refresh");
                     });
                 });
                 $.getJSON(url+'?accion=getModelos', function(json) { // Obtener Parroquias
@@ -47,6 +82,7 @@ $(window).load(function(){
                         }
                     });  
                     $('#selModelo').html(strHTML);
+                    $('#selModelo').selectpicker("refresh");
                     $.getJSON(url+'?accion=getColores', function(json) { // Obtener Modelos
                         arrayColores = json;
                         console.log('arrayColores', arrayColores);
@@ -57,6 +93,7 @@ $(window).load(function(){
                             }
                         });  
                         $('#selColor').html(strHTML);
+                        $('#selColor').selectpicker("refresh");
                         $.getJSON(url+'?accion=getTecnologias', function(json) { // Obtener Tecnologías
                             arrayTecnologias = json;
                             console.log('arrayColores', arrayColores);
@@ -67,6 +104,7 @@ $(window).load(function(){
                                 }
                             });  
                             $('#selTecnologia').html(strHTML);
+                            $("#selTecnologia").selectpicker("refresh");
                             $.getJSON(url+'?accion=getOperadoras', function(json) { // Obtener Tecnologías
                                 arrayOperadoras = json;
                                 console.log('arrayColores', arrayColores);
@@ -77,6 +115,7 @@ $(window).load(function(){
                                     }
                                 });  
                                 $('#selOperadora').html(strHTML);
+                                $("#selOperadora").selectpicker("refresh");
                                 $.getJSON(url+'?accion=getAccesorios', function(json) { // Obtener Accesorios
                                     arrayAccesorios = json;
                                     console.log('arrayAccesorios', arrayAccesorios);
@@ -87,6 +126,7 @@ $(window).load(function(){
                                         $.each(arrayAccesorios, function(i, j){
                                             strHTML += lineaAccesorio(i, j);
                                         });
+                                        console.log(strHTML);
                                         $('#lstAccesorios').html(strHTML);
                                         $('.chkAccesorio').click(function(){
                                             id = $(this).attr('data-id');

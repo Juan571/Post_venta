@@ -15,8 +15,14 @@ and open the template in the editor.
         <link rel="stylesheet" href="http://rec.vtelca.gob.ve/bootstrap/3.1.1/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="http://rec.vtelca.gob.ve/bootstrap/3.1.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/registroCaso.css">
-        
+        <link rel="stylesheet" href="http://rec.vtelca.gob.ve/bootstrap-select/1.6.0/dist/css/bootstrap-select.css">
+        <link rel="stylesheet" href="http://rec.vtelca.gob.ve/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
+
+        <!-- Bootstrap DateTimePicker -->
         <script src="http://rec.vtelca.gob.ve/jquery/2.1.1/jquery.min.js"></script>
+        <script src="http://rec.vtelca.gob.ve/bootstrap-datetimepicker/js/moment.min.js"></script>
+        <script src="http://rec.vtelca.gob.ve/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+
         <script src="http://rec.vtelca.gob.ve/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <script src="http://rec.vtelca.gob.ve/bootstrap-select/1.6.0/dist/js/bootstrap-select.min.js"></script>
         <script src="js/registroCaso.js"></script>
@@ -64,15 +70,15 @@ and open the template in the editor.
             <div class="row">
                 <div class="col-md-1">Estado:</div>
                 <div class="col-md-3">
-                    <select id="selEstados" class="selectpicker"><option value="0">Estado</option></select>
+                    <select id="selEstados" class="show-tick selectpicker" data-live-search="true"><option value="0">Estado</option></select>
                 </div>
                 <div class="col-md-1">Municipio:</div>
                 <div class="col-md-3">
-                    <select id="selMunicipios" class="selectpicker"><option value="0">Municipio</option></select>
+                    <select id="selMunicipios" class="show-tick selectpicker" data-live-search="true"><option value="0">Municipio</option></select>
                 </div>
                 <div class="col-md-1">Parroquia:</div>
                 <div class="col-md-3">
-                    <select id="selParroquias" class="selectpicker"><option value="0">Parroquia</option></select>
+                    <select id="selParroquias" class="show-tick selectpicker" data-live-search="true"><option value="0">Parroquia</option></select>
                 </div>
             </div>
             <h2>Información de Contacto</h2>
@@ -102,19 +108,19 @@ and open the template in the editor.
                 </div>
                 <div class="col-md-1">Tecnología:</div>
                 <div class="col-md-3">
-                    <select id="selTecnologia" class="selectpicker">
+                    <select id="selTecnologia" class="show-tick selectpicker" data-live-search="true">
                     </select>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-1">Modelo:</div>
                 <div class="col-md-5">
-                    <select id="selModelo" class="selectpicker">
+                    <select id="selModelo" class="show-tick selectpicker" data-live-search="true">
                     </select>
                 </div>
                 <div class="col-md-1">Color:</div>
                 <div class="col-md-5">
-                    <select id="selColor" class="selectpicker">
+                    <select id="selColor" class="show-tick selectpicker" data-live-search="true">
                     </select>
                 </div>
             </div>
@@ -125,11 +131,11 @@ and open the template in the editor.
                 </div>
                 <div class="col-md-2">Fecha de Compra:</div>
                 <div class="col-md-2">
-                    <input id="txtFechaCompra" class="form-control" type="text" placeholder="dd/mm/yyyy">
+                    <input id="txtFechaCompra" class="txtFecha form-control" type="text" placeholder="dd/mm/yyyy">
                 </div>
                 <div class="col-md-1">Operadora:</div>
                 <div class="col-md-3">
-                    <select id="selOperadora" class="selectpicker">
+                    <select id="selOperadora" class="show-tick selectpicker" data-live-search="true">
                     </select>
                 </div>
             </div>
