@@ -124,6 +124,12 @@ switch ($accion) {
         echo $ejecuta->obtenerInventario();
 
         break;
+    case "getAccesoriosOrden":
+        $idorden=$_REQUEST[data];
+
+        echo $ejecuta->obtenerAccesoriosOrden($idorden);
+
+        break;
     case "getOrdenes":
 
         echo $ejecuta->obtenerOrdenesAsig();

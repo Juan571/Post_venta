@@ -179,9 +179,26 @@ function cargarTablas(action,data,tabla,cambiarDiseno,columnasvisibles,url,urlId
                             $(nRow).removeClass("selected");
                             console.log(aData);
 
-                            $('#entradaAccesorios').foundation('reveal', 'open');
-                            //alert("VER DETALLES xD");
-                            //selectAgencia(aData);
+                            detallesOrdenAsignacion(aData);
+                            console.log(aData[0]);
+
+                        });
+                        $(btnEmpleado).parent().attr('style','text-align:center');
+                    }
+                    if(tabla==="#tablaAccesoriosOrden"){
+                        var boton = $(nRow).find(".botonRow");
+                        var btnEmpleado = $(nRow).find(".botonRow");
+
+                        $(btnEmpleado).removeClass("btn-primary").html("<span class='glyphicon glyphicon-ok'></span>");
+                        $(btnEmpleado).addClass(" btn-info");
+                        $(btnEmpleado).off();// Se elimina el Evento anterior
+                        $(btnEmpleado).on("click",function () {
+                            $(nRow).removeClass("selected");
+                            console.log(aData);
+
+                            detallesOrdenAsignacion(aData);
+                            console.log(aData[0]);
+
                         });
                         $(btnEmpleado).parent().attr('style','text-align:center');
                     }

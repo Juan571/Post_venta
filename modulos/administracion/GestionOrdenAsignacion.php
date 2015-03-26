@@ -21,7 +21,8 @@
         <h1>Gestion de Ordenes de Asginacion (Entrada de accesorios)</h1>
         <div class="row">
             <div class="col-md-4">
-                <a href="#" style="width:100%" class="btn btn-default" id="btnEntradaAccesorios" data-reveal-id="entradaAccesorios"><i class="fa fa-dropbox"></i> Registrar Orden de Asignacion</a>
+                <a href="#" style="display: none" id="btnmodal" data-reveal-id="entradaAccesorios">Registrar Orden de Asignacion</a>
+                <a href="#" style="width:100%" class="btn btn-default" id="btnEntradaAccesorios"><i class="fa fa-dropbox"></i> Registrar Orden de Asignacion</a>
             </div>
             <div class="col-md-3">
                 <a href="#" style="width:100%" class="btn btn-default" id="btnNuevoAccesorio"><i class="fa fa-plus"></i> Agregar Accesorio</a>
@@ -38,57 +39,39 @@
         </table>
     </div>
     <div id="entradaAccesorios" class="reveal-modal full">
-        <h1>Envío de Accesorios</h1>
+        <h1>Recibir accesorios de la Orden de Asignación</h1>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-5">
-
+                <div class="col-md-6">
                     <strong>Orden de Asignacion: </strong>
-                    <input type="text" class="form-control" id="txtOrdenAsignacion" placeholder="Indique la orden de Asignación">
+
                 </div>
-                <div class="col-md-3">
+
+                <div class="col-md-6">
                     <strong>Fecha: </strong>
-                    <input type="text" class="form-control" id="txtOrdenFecha" placeholder="Indique la Fecha">
+
                 </div>
+                <div class="col-md-6">
+
+                    <label id="txtOrdenAsignacion">dassda</label>
+                </div>
+                <div class="col-md-6">
+
+                    <label id="txtOrdenFecha" >dassda</label>
+                </div>
+
             </div>
             <div class="row">
 
                 <div class="col-md-12">
                     <strong>Observacion </strong><br>
-                    <input type="text" class="form-control" id="txtOrdenObservacion" placeholder="Observaciones">
+                    <label id="txtOrdenObservacion" >dassda</label>
                 </div>
 
             </div>
-            <div class="row" style="margin-top: 2%">
 
+            <table  class="table table-striped" id="tablaAccesoriosOrden">
 
-                <div class="col-md-5">
-                    <strong>Modelos</strong>
-                    <select id="selModelos" style="width:100%;height:100%">
-                    </select>
-                </div>
-                <div class="col-md-5">
-                    <strong>Accesorios</strong>
-                    <select id="selAccesorios" style="width:100%;height:100%">
-                        <option value="0">Indique Accesorio</option>
-                    </select>
-                </div>
-                <div class="col-md-2">
-                    <button class="btn btn-warning" id="btnAgregarInvModelo"><span class="glyphicon glyphicon-plus"></span></button>
-                </div>
-            </div>
-            <hr>
-            <table  class="table table-striped" id="tablaEntradaAccesorios">
-                <thead>
-                <th>N°</th>
-                <th>Accesorio</th>
-                <th>Modelo</th>
-                <th style="text-align: center;width: 16%;">Cantidad</th>
-                <th style="text-align: center;">Eliminar</th>
-
-                </thead>
-                <tbody id="tblEntradaAccesorios">
-                </tbody>
             </table>
             <hr>
             <div class="row">

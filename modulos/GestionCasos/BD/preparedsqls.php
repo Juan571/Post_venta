@@ -49,7 +49,33 @@ class preparedsqls{
             //$this->desconectarSigesp();
             echo $out;
         }
+        public function obtenerAccesoriosOrden($idorden){
+            $sql = "SELECT transacciones.id as id_transac,
+                  detalles_inventario.id as id_detalles_inv,
+                  detalles_inventario.modelo_id as idmodelo,
+                  detalles_inventario.inventario_id as idinventario,
+                  transacciones.recibido as Recibido,
+                  CONCAT( modelos.modelo, ' (',  modelos.descripcion,')') as modelo,
+                  inventario.producto as accesorio,
+                  transacciones.cantidad as cantidad
 
+                  from transacciones
+                  JOIN detalles_inventario on (transacciones.detalles_inventario_id = detalles_inventario.id)
+                  JOIN inventario ON (inventario.id = inventario_id)
+                  JOIN modelos on (modelos.id = modelo_id)
+                  JOIN orden_asignaciones on (transacciones.orden_asignaciones_id = orden_asignaciones.id)
+                  where orden_asignaciones.id=$idorden";
+
+            $result = $this->con->query($sql,2);
+            $arr = array();
+            foreach ($result as $row => $valor) {
+                $arr[]  = $valor;
+            }
+
+            $out = json_encode($arr);
+            //$this->desconectarSigesp();
+            return $out;
+        }
         public function obtenerOrdenesAsig(){
             $sql = "SELECT id,
                     fecha as Fecha_de_Orden,
