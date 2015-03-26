@@ -20,8 +20,8 @@
         <div class="container">
             <h1>Inventario</h1>
             <div class="row">
-                <div class="col-md-3">
-                    <a href="#" style="width:100%" class="btn btn-default" id="btnEntradaAccesorios" data-reveal-id="entradaAccesorios"><i class="fa fa-dropbox"></i> Entrada de Accesorios</a>
+                <div class="col-md-4">
+                    <a href="#" style="width:100%" class="btn btn-default" id="btnEntradaAccesorios" data-reveal-id="entradaAccesorios"><i class="fa fa-dropbox"></i> Registrar Orden de Asignacion</a>
                 </div>
                 <div class="col-md-3">
                     <a href="#" style="width:100%" class="btn btn-default" id="btnNuevoAccesorio"><i class="fa fa-plus"></i> Agregar Accesorio</a>
@@ -38,24 +38,40 @@
             </table>
         </div>
 		<div id="entradaAccesorios" class="reveal-modal full">
-			<h1>Entrada de Accesorios</h1>
+			<h1>Envío de Accesorios</h1>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-5">
+
                         <strong>Orden de Asignacion: </strong>
                         <input type="text" class="form-control" id="txtOrdenAsignacion" placeholder="Indique la orden de Asignación">
+                    </div>
+                    <div class="col-md-3">
+                        <strong>Fecha: </strong>
+                        <input type="text" class="form-control" id="txtOrdenFecha" placeholder="Indique la Fecha">
                     </div>
                 </div>
                 <div class="row">
 
-                    <div class="col-md-5">
-                        <strong>Accesorios</strong>
-                        <select id="selAccesorios" style="width:100%;height:100%"></select>
+                    <div class="col-md-12">
+                        <strong>Observacion </strong><br>
+                        <input type="text" class="form-control" id="txtOrdenObservacion" placeholder="Observaciones">
                     </div>
+
+                </div>
+                <div class="row" style="margin-top: 2%">
+
 
                     <div class="col-md-5">
                         <strong>Modelos</strong>
-                        <select id="selModelos" style="width:100%;height:100%"></select>
+                        <select id="selModelos" style="width:100%;height:100%">
+                        </select>
+                    </div>
+                    <div class="col-md-5">
+                        <strong>Accesorios</strong>
+                        <select id="selAccesorios" style="width:100%;height:100%">
+                            <option value="0">Indique Accesorio</option>
+                        </select>
                     </div>
                     <div class="col-md-2">
                           <button class="btn btn-warning" id="btnAgregarInvModelo"><span class="glyphicon glyphicon-plus"></span></button>
@@ -67,11 +83,11 @@
                         <th>N°</th>
                         <th>Accesorio</th>
                         <th>Modelo</th>
-                        <th style="width: 14%;">Cantidad</th>
-                        <th>Eliminar</th>
+                        <th style="text-align: center;width: 16%;">Cantidad</th>
+                        <th style="text-align: center;">Eliminar</th>
 
                     </thead>
-                    <tbody id="tblEntradaAccesorios">
+                        <tbody id="tblEntradaAccesorios">
                     </tbody>
                 </table>
                 <hr>
@@ -94,4 +110,13 @@
         <div id="popDelAccesorio" title="Remover Accesorio" style="display: none">
              <p>Está seguro que desea remover este accesorio?</p>
         </div>
+    <script type="text/javascript">
+
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+    </script>
 <?php include "../../includes/footer.php"; ?>
