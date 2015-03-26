@@ -45,15 +45,14 @@ function crearTh(datos,tabla){
 function cargarTablas(action,data,tabla,cambiarDiseno,columnasvisibles,url,urlIdioma){
   var header=[];
    datos = {
-               action          : action, 
+               action          : action,
+               accion          : action,
                data            : data
           }
   var tabla=tabla;
-  if(urlIdioma==null){
-    urlIdioma="./";
-  }else{
-    urlIdioma="../";
-  }
+    if(urlIdioma==null){
+        urlIdioma="./";
+    }
  if(url==null){
     dir="./BD/swtichprepared.php";
   }else{
@@ -156,9 +155,37 @@ function cargarTablas(action,data,tabla,cambiarDiseno,columnasvisibles,url,urlId
                 ],
                     
                 "fnRowCallback":function( nRow, aData, iDisplayIndex, iDisplayIndexFull ){
-                          
-                             
-                          if(tabla==="#tabla_ofc"){
+                          if (tabla==="#tablaAccesorios"){
+                              $(nRow).children().each(function(index, td) {
+
+                                  if(index == 4)  {
+                                      // console.log($(td).text());
+                                      if ($(td).html() == "Disponible") {
+                                      }else{
+                                          $(td).attr("style","background-color:rgb(204, 255, 204)")
+                                      }
+                                  }
+                              });
+
+                          }
+                    if(tabla==="#tablaOrdenes"){
+                        var boton = $(nRow).find(".botonRow");
+                        var btnEmpleado = $(nRow).find(".botonRow");
+
+                        $(btnEmpleado).removeClass("btn-primary").html("<span class='glyphicon glyphicon-search'></span>");
+                        $(btnEmpleado).addClass(" btn-info");
+                        $(btnEmpleado).off();// Se elimina el Evento anterior
+                        $(btnEmpleado).on("click",function () {
+                            $(nRow).removeClass("selected");
+                            console.log(aData);
+
+                            $('#entradaAccesorios').foundation('reveal', 'open');
+                            //alert("VER DETALLES xD");
+                            //selectAgencia(aData);
+                        });
+                        $(btnEmpleado).parent().attr('style','text-align:center');
+                    }
+                    if(tabla==="#tabla_ofc"){
                              var boton = $(nRow).find(".botonRow");
                                  var btnEmpleado = $(nRow).find(".botonRow");
                                  $(btnEmpleado).removeClass("btn-primary").html("<span class='icon-ok'>Ver Detalles</span>");
@@ -177,13 +204,14 @@ function cargarTablas(action,data,tabla,cambiarDiseno,columnasvisibles,url,urlId
                      var tabla1 = $(tabla).DataTable();
                      var cadenatabla = tabla + " tbody";
                      $(cadenatabla).on( 'click', 'tr', function () {
+
                          if ( $(this).hasClass('selected') ) {
                           }
                          else {
                            tabla1.$('tr.selected').removeClass('selected');
                            $(this).addClass('selected');
-                          }  
-                     }); 
+                          }
+                     });
                  }
                 //aoColumns..
               });  // datatable 

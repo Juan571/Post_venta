@@ -49,6 +49,68 @@ class preparedsqls{
             //$this->desconectarSigesp();
             echo $out;
         }
+
+        public function obtenerOrdenesAsig(){
+            $sql = "SELECT id,
+                    fecha as Fecha_de_Orden,
+                    codigo_orden as Codigo_de_Orden,
+                    observacion as Observacion,
+                    case  when orden_asignaciones.estatus=1 then 'Pendiente' else case when orden_asignaciones.estatus=2 then 'Incompleto' else 'Procesado' end end AS  Estado
+                    from orden_asignaciones";
+
+            $result = $this->con->query($sql,2);
+            $arr = array();
+            foreach ($result as $row => $valor) {
+                $arr[]  = $valor;
+            }
+
+            $out = json_encode($arr);
+            //$this->desconectarSigesp();
+            return $out;
+        }
+        public function obtenerInventario(){
+            $sql = "SELECT detalles_inventario.id as id,
+                  detalles_inventario.modelo_id as idmodelo,
+                  detalles_inventario.inventario_id as idinventario,
+                  CONCAT( modelos.modelo, ' (',  modelos.descripcion,')') as modelo,
+                  inventario.producto as accesorio,
+                  detalles_inventario.cantidad as cantidad,
+                  'Disponible' as Estado
+
+
+
+                from detalles_inventario
+                  JOIN inventario ON (inventario.id = inventario_id)
+                  JOIN modelos on (modelos.id = modelo_id)";
+
+            $result = $this->con->query($sql,2);
+            $arr = array();
+            foreach ($result as $row => $valor) {
+                $arr[]  = $valor;
+            }
+            $sql = "SELECT detalles_inventario.id as id,
+                  detalles_inventario.modelo_id as idmodelo,
+                  detalles_inventario.inventario_id as idinventario,
+                  CONCAT( modelos.modelo, ' (',  modelos.descripcion,')') as modelo,
+                  inventario.producto as accesorio,
+                  transacciones.cantidad as cantidad,
+                  CONCAT(  orden_asignaciones.codigo_orden, ' (En tramite)') as Estado
+                  from transacciones
+                  JOIN detalles_inventario on (transacciones.detalles_inventario_id = detalles_inventario.id)
+                  JOIN inventario ON (inventario.id = inventario_id)
+                  JOIN modelos on (modelos.id = modelo_id)
+                  JOIN orden_asignaciones on (transacciones.orden_asignaciones_id = orden_asignaciones.id)
+                  where transacciones.recibido=0 and orden_asignaciones.estatus=1";
+
+            $result = $this->con->query($sql,2);
+
+            foreach ($result as $row => $valor) {
+                $arr[]  = $valor;
+            }
+            $out = json_encode($arr);
+            //$this->desconectarSigesp();
+            return $out;
+        }
         public function obtenerAgencias($data){
             $sql=("SELECT * FROM  agencias where id = agencia_id");
             
