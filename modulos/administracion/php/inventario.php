@@ -125,7 +125,7 @@ switch ($accion) {
 
         break;
     case "getAccesoriosOrden":
-        $idorden=$_REQUEST[data];
+        $idorden=$_REQUEST['data'];
 
         echo $ejecuta->obtenerAccesoriosOrden($idorden);
 
