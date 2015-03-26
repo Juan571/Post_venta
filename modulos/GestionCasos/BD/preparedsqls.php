@@ -170,7 +170,8 @@ class preparedsqls{
                        solicitantes.apellidos as apellidos,
                        solicitantes.cedula as cedula,
                        solicitantes.telefono_movil as tlf_movil,
-                       solicitantes.telefono_fijo as tlf_fijo,                       
+                       solicitantes.telefono_fijo as tlf_fijo,
+                       modelos.id as modelo_id,
                        case  when solicitantes.correo='' then 'No posee' else solicitantes.correo end AS correo_sol,
                        equipos.factura as nfactura,
                        modelos.modelo as equipo_modelo,
@@ -295,6 +296,7 @@ class preparedsqls{
                                                         solicitudes_accesorios_inventario.aprobado as aprobado,
                                                         inventario.producto as producto,
                                                         motivos_reemplazo.motivo as motivo,
+                                                        motivos_reemplazo.id as motivo_id,
                                                         seguimientos.observaciones as observaciones
                                                         
                                                         FROM postventa_accesorios.solicitudes_accesorios_inventario 
@@ -327,7 +329,7 @@ class preparedsqls{
                                                                                 
                                                                             </div>
                                                                             <div class='col-lg-4'>
-                                                                                <textarea maxlength='90' class='txtarea txtarea$idcaso' id=".$accesorios['id']." rows='2' cols='40'>".$accesorios['observaciones']."</textarea>  
+                                                                                <textarea maxlength='90' class='txtarea txtarea$idcaso' id=".$accesorios['id']." rows='2' cols='40'>".$accesorios['observaciones']."</textarea>
                                                                             </div>
                                                                           </div>
                                                                           ";
@@ -341,7 +343,7 @@ class preparedsqls{
                                                                           <span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>
                                                                           <span class='sr-only'>Error:</span>
                                                                           Verifique los datos para poder procesar el caso, ya que no se podrá deshacer la accion...
-                                                                          <a data-text='$idcaso'  class='btnprocaso btn btn-info btn-lg'><i class='glyphicon glyphicon-ok'>Procesar</i></a>
+                                                                          <a data-text='$idcaso' data-modelo='".$datosCasos["modelo_id"]."' class='btnprocaso btn btn-info btn-lg'><i class='glyphicon glyphicon-ok'>Procesar</i></a>
                                                                         </div>
                                                                         <div style='margin-top:-1%;margin-bottom: 1%;margin-left: 2%;margin-right: 2%;' class='page-header'></div>
                                                                     </div>

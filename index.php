@@ -1,5 +1,11 @@
 <?php include "./includes/header.php"; ?>
-        <header></header>
+        <header>
+            <script>
+                $(document).ready(function () {
+                    $("#txtCedula").focus();
+                });
+            </script>
+        </header>
         <div class="container">
             <h1 style="text-align:center">Accesorios</h1>
             <br>
