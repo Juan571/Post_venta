@@ -53,8 +53,9 @@
         case $action === 'procesarCaso': 
                 $accesorios=$_POST['accesorios'];    
                 $idcaso = $_POST['casoid'];
+                $modelo_id=$_POST['modelo_id'];
                 $todosAccAprob = false;
-            
+
                 for ($i=0;$i<count($accesorios);$i++){
                     $id = $accesorios[$i][1];
                     $aprobd = $accesorios[$i][0];
@@ -83,7 +84,7 @@
                 else{
                     $sql = ("INSERT INTO seguimientos VALUES (null,now(), 6, $idcaso, '$obser','0','0');");
                     $ejecuta->ejecutar($sql,$action);
-                    $sql = ("UPDATE solicitudes_accesorios SET tipo_estado_id=6 WHERE id=$idcaso"); 
+                    $sql = ("UPDATE solicitudes_accesorios SET tipo_estado_id=6 WHERE id=$idcaso");
                     $ejecuta->ejecutar($sql,$action);
                 }
                 $result = array("respuesta"=>$idcaso,"evento"=>$action);

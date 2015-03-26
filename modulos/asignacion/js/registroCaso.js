@@ -244,6 +244,9 @@ $(window).load(function(){
                     $.getJSON(urlProcesar, function(json) { // Guardar Accesorios
                         console.log('Guardar Accesorios', json);
                         alert('Registro agregado con exito');
+                        $("#selParroquias").selectpicker("refresh");
+                        $("#selEstados").selectpicker("refresh");
+                        $("#selMunicipios").selectpicker("refresh");
                         $('input:text').val('');
                         $('input:checkbox').prop('checked', false);
                         $('.txtAccesorio').prop('disabled', true);

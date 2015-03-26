@@ -63,6 +63,7 @@ function selectAgencia(data){
         idcaso = $(this).attr("data-text");
         ncasos = $($(".btn"+idcaso)).length;
         obsercaso = "";
+        modelo = $(this).attr("data-modelo");
         observacionesvacio=false;
                 var accesorios=[];
                 var caso={};
@@ -88,9 +89,7 @@ function selectAgencia(data){
                    }
                 }
                 caso["accesorios"]=accesorios;
-                /* for (j=0;j< accesorios.length;j++){
-                    console.log(caso["accesorios"][j].length)
-                }*/
+                caso["modelo_id"]=modelo;
                 if (observacionesvacio){
                     alert("Las Observaciones para el accesorio rechazado debe contener al menos  caracteres, Complete los Campos en rojo.");
                 }
@@ -154,9 +153,9 @@ function ajax(datos,tipodato){
         },
         success:function(resp, textStatus, jqXHR){
                 //console.log(resp) ;
-          
+
                 switch (resp.evento) {
-                 
+
                  case "guardar":
                    
                      if (resp.respuesta.error){
