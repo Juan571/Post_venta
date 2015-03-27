@@ -9,23 +9,23 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="http://rec.vtelca.gob.ve/img/favicon.ico" />
+        <link rel="shortcut icon" href="../../resources/img/favicon.ico" />
 
-        <link rel="stylesheet" href="http://rec.vtelca.gob.ve/bootstrap/3.1.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="http://rec.vtelca.gob.ve/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="http://rec.vtelca.gob.ve/bootstrap/3.1.1/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="./dataTables/media/css/jquery.dataTables.css">
+        <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../resources/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/jquery.dataTables.css">
 
         <link rel="stylesheet" type="text/css" href="./JS/jqueryUI/css/blitzer/jquery-ui-1.10.4.custom.css">    
-        <script src="http://rec.vtelca.gob.ve/jquery/2.1.1/jquery.min.js"></script>
-        <script src="http://rec.vtelca.gob.ve/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-        <script src="http://rec.vtelca.gob.ve/bootstrap-select/1.6.0/dist/js/bootstrap-select.min.js"></script>
+        <script src="../../resources/js/jquery.min.js"></script>
+        <script src="../../resources/js/bootstrap.min.js"></script>
+        <script src="../../resources/dist/js/bootstrap-select.min.js"></script>
         <script type="text/javascript" src="./JS/tablas.js"></script>
         <script type="text/javascript" src="./JS/funcionesGestion_Casos.js"></script>
 
-        <script src="http://rec.vtelca.gob.ve/datatables/1.10.2/media/js/jquery.dataTables.min.js"></script>
-        <script src="http://rec.vtelca.gob.ve/bootstrap-switch/master/js/bootstrap-switch.min.js"></script>
-        <link rel="stylesheet" href="http://rec.vtelca.gob.ve/bootstrap-switch/master/css/bootstrap3/bootstrap-switch.min.css">
+        <script src="../../resources/js/jquery.dataTables.min.js"></script>
+        <script src="../../resources/js/bootstrap-switch.min.js"></script>
+        <link rel="stylesheet" href="../../resources/css/bootstrap-switch.min.css">
 
         <title>Gestion de Casos</title>
         <style>
