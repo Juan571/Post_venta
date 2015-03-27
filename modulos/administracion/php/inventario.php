@@ -79,6 +79,7 @@ function scanear_string($string)
     return $string;
 }
 $accion = $_REQUEST["accion"];
+if (isset($_REQUEST["data"]))
 $data = $_REQUEST["data"];
 
 $ejecuta  = new preparedsqls();

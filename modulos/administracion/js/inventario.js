@@ -58,8 +58,8 @@ $(window).load(function(){
         //console.log('getModelos', arrayModelos);
         //llenarAccesorios();
         llenarEntradaModelos();
-    }).fail(function(){
-        console.log('fail');
+    }).fail(function(aa){
+        console.log(aa);
     });
 
     $('#selModelos').change(function(){
