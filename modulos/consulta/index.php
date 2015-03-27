@@ -120,7 +120,7 @@
                     </div>
 
                 </div>
-            <div class="panel-footer">Footer footer</div>
+            <div class="panel-footer">Casos de solicitudes de accesorios</div>
         </div>
     </div>
 </body>

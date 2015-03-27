@@ -86,7 +86,12 @@ $(document).ready(function(){
                 $("#Procesado").html("--/--/-- --:--:--");
                 $("#Despachado").html("--/--/-- --:--:--");
                 $("#En_Oficina_Comercial").html("--/--/-- --:--:--");
-                $("#Entregado").html("--/--/-- --:--:--");
+                $("#Entregado-icon").html("--/--/-- --:--:--");
+                $("#pendiente-icon").html("<span class='glyphicon glyphicon-remove'></span>");
+                $("#Procesado-icon").html("<span class='glyphicon glyphicon-remove'></span>");
+                $("#Despachado-icon").html("<span class='glyphicon glyphicon-remove'></span>");
+                $("#En_Oficina_Comercial-icon").html("<span class='glyphicon glyphicon-remove'></span>");
+                $("#Entregado-icon").html("<span class='glyphicon glyphicon-remove'></span>");
                 $.each(json["trazabilidad"], function (i, j) {
                     $("#"+j["estado_seguimiento"]).html(j["fecha_seguimiento"]);
                     $("#"+j["estado_seguimiento"]+"-icon").html("<span class='glyphicon glyphicon-ok'></span>")

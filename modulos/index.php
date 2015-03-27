@@ -17,9 +17,9 @@
         header {
             width: calc(100% - 10px);
             height: 60px;
-            background: url(http://rec.vtelca.gob.ve/img/cintillo-movilnet.png) left no-repeat,
-            url(http://rec.vtelca.gob.ve/img/logo-movilnet.gif) center no-repeat,
-            url(http://rec.vtelca.gob.ve/img/cintillo-d.png) right no-repeat;
+            background: url(../resources/img/cintillo-movilnet.png) left no-repeat,
+            url(../resources/img/logo-movilnet.gif) center no-repeat,
+            url(../resources/img/cintillo-d.png) right no-repeat;
             background-color: #fff;
             background-size: auto 40px;
             margin: 5px;
@@ -42,7 +42,7 @@
             border: 0;
             width: 100%;
             height: calc(100% - 143px);
-            background: #fff url(http://rec.vtelca.gob.ve/img/fondo-claro.png) center no-repeat;
+            background: #fff url(../resources/img/fondo-claro.png) center no-repeat;
             background-size: cover;
         }
     </style>
@@ -67,22 +67,18 @@
                     <span class="glyphicon glyphicon-edit"></span>
                     Asignación de accesorios
                 </a></li>
-                <!--
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="fa fa-gear"></i> Administración <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li class="disabled"><a href="administracion/notificaciones.php" target="objMain"><i class="fa fa-bell"></i> Notificaciones</a></li>
-                        <li><a href="administracion/inventario.php" target="objMain"><i class="fa fa-tasks"></i> Inventario</a></li>
-                        <li class="divider"></li>
-                        <li class="disabled"><a href="" target="objMain">Administrar Agentes Autorizados</a></li>
-                        <li class="disabled"><a href="" target="objMain">Administrar Colores</a></li>
-                        <li class="disabled"><a href="" target="objMain">Administrar Modelos</a></li>
-                        <li class="disabled"><a href="" target="objMain">Administrar Motivos de Reemplazo</a></li>
-                        <li class="disabled"><a href="" target="objMain">Administrar Operadoras</a></li>
-                        <li class="disabled"><a href="" target="objMain">Administrar Tecnologías</a></li>
-                    </ul>
-                </li>
-                -->
+                <li role="presentation"><a href="consulta/" target="objMain">
+                    <span class="glyphicon glyphicon-search"></span>
+                    Consultar Caso
+                </a></li>
+                <li role="presentation"><a href="administracion/inventario.php" target="objMain">
+                    <i class="fa fa-dropbox"></i>
+                    Inventario
+                </a></li>
+                <li role="presentation"><a href="administracion/GestionOrdenAsignacion.php" target="objMain">
+                    <span class="glyphicon glyphicon-log-in"></span>
+                    Entrada de Accesorios
+                </a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right" style="margin-right:1rem">
                 <li class="dropdown">

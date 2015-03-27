@@ -22,9 +22,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 header {
     width: calc(100% - 10px);
     height: 60px;
-    background: url(http://rec.vtelca.gob.ve/img/cintillo-i.png) left no-repeat, 
-                url(http://rec.vtelca.gob.ve/img/cintillo-c.png) center no-repeat, 
-                url(http://rec.vtelca.gob.ve/img/cintillo-d.png) right no-repeat;
+    background: url(../../../resources/img/cintillo-i.png) left no-repeat,
+                url(../../../resources/img/cintillo-c.png) center no-repeat,
+                url(../../../resources/img/cintillo-d.png) right no-repeat;
     background-color: #fff;
     background-size: auto 40px;
     margin: 5px;
@@ -32,7 +32,7 @@ header {
 footer {
     width: calc(100% - 10px);
     height: 60px;
-    background: url(http://rec.vtelca.gob.ve/img/pie-pagina.png) center no-repeat;
+    background: url(../../../resources/img/pie-pagina.png) center no-repeat;
     background-color: #fff;
     background-size: auto 40px;
     margin: 5px;
@@ -61,15 +61,15 @@ h1, h2, h3, h4 {
 }
 @media all and (max-width: 800px) {
     #cabecera {
-        background: url(http://rec.vtelca.gob.ve/img/cintillo-i.png) left no-repeat,
-            url(http://rec.vtelca.gob.ve/img/cintillo-c.png) right no-repeat;
+        background: url(../../../resources/img/cintillo-i.png) left no-repeat,
+            url(../../../resources/img/cintillo-c.png) right no-repeat;
         background-color: #fff;
         background-size: auto 40px;
     }
 }
 @media all and (max-width: 479px) {
     #cabecera {
-        background: url(http://rec.vtelca.gob.ve/img/cintillo-c.png) center no-repeat;
+        background: url(../../../resources/img/cintillo-c.png) center no-repeat;
         background-color: #fff;
         background-size: auto 40px;
     }

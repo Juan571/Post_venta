@@ -189,17 +189,10 @@ function cargarTablas(action,data,tabla,cambiarDiseno,columnasvisibles,url,urlId
                         var boton = $(nRow).find(".botonRow");
                         var btnEmpleado = $(nRow).find(".botonRow");
 
-                        $(btnEmpleado).removeClass("btn-primary").html("<span class='glyphicon glyphicon-ok'></span>");
-                        $(btnEmpleado).addClass(" btn-info");
+                        $(btnEmpleado).removeClass("btn-primary").parent().html(" <div class=' make-switch col-lg-2'><input data-text='' id=btnsw class ='btnsw btn' type='checkbox' data-off-color='danger' data-on-color='info' data-size='large' data-on-text='' data-off-text='' > </div>");
+                        $(btnEmpleado).addClass("btn-info");
                         $(btnEmpleado).off();// Se elimina el Evento anterior
-                        $(btnEmpleado).on("click",function () {
-                            $(nRow).removeClass("selected");
-                            console.log(aData);
 
-                            detallesOrdenAsignacion(aData);
-                            console.log(aData[0]);
-
-                        });
                         $(btnEmpleado).parent().attr('style','text-align:center');
                     }
                     if(tabla==="#tabla_ofc"){
@@ -218,7 +211,11 @@ function cargarTablas(action,data,tabla,cambiarDiseno,columnasvisibles,url,urlId
                 },
 
                 "fnDrawCallback": function () {
-                     var tabla1 = $(tabla).DataTable();
+                    $(".btnsw").bootstrapSwitch();
+                    $('.bootstrap-switch-handle-on').attr("class", "glyphicon glyphicon-ok-sign bootstrap-switch-handle-on bootstrap-switch-info");
+                    $('.bootstrap-switch-handle-off').attr("class", "glyphicon glyphicon-remove bootstrap-switch-handle-on bootstrap-switch-danger");
+
+                    var tabla1 = $(tabla).DataTable();
                      var cadenatabla = tabla + " tbody";
                      $(cadenatabla).on( 'click', 'tr', function () {
 

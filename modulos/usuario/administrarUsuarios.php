@@ -17,9 +17,9 @@
         header {
             width: calc(100% - 10px);
             height: 60px;
-            background: url(http://rec.vtelca.gob.ve/img/cintillo-movilnet.png) left no-repeat,
-            url(http://rec.vtelca.gob.ve/img/logo-movilnet.gif) center no-repeat,
-            url(http://rec.vtelca.gob.ve/img/cintillo-d.png) right no-repeat;
+            background: url(../../resources/img/cintillo-movilnet.png) left no-repeat,
+            url(../../resources/img/logo-movilnet.gif) center no-repeat,
+            url(../../resources/img/cintillo-d.png) right no-repeat;
             background-color: #fff;
             background-size: auto 40px;
             margin: 5px;
@@ -42,7 +42,7 @@
             border: 0;
             width: 100%;
             height: calc(100% - 143px);
-            background: #fff url(http://rec.vtelca.gob.ve/img/fondo-claro.png) center no-repeat;
+            background: #fff url(../../resources/img/fondo-claro.png) center no-repeat;
             background-size: cover;
         }
     </style>
@@ -53,7 +53,7 @@
 <script src="../../resources/dist/js/bootstrap-select.min.js"></script>
         <link rel="stylesheet" href="../../resources/dist/css/bootstrap-select.min.css">
         <script src="../../resources/ui/jquery-ui.js"></script>
-        <link rel="stylesheet" href="http://rec.vtelca.gob.ve/jquery-ui/1.10.3/themes/base/jquery.ui.all.css">
+        <link rel="stylesheet" href="../../resources/themes/base/jquery.ui.all.css">
         <script src="js/administrarUsuarios.js"></script>
         <script>
             <?php

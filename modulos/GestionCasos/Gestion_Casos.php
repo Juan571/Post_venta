@@ -75,15 +75,15 @@ and open the template in the editor.
             }
             @media all and (max-width: 800px) {
                 #cabecera {
-                    background: url(http://rec.vtelca.gob.ve/img/cintillo-i.png) left no-repeat,
-                        url(http://rec.vtelca.gob.ve/img/cintillo-c.png) right no-repeat;
+                    background: url(../../resources/img/cintillo-i.png) left no-repeat,
+                        url(../../resources/img/cintillo-c.png) right no-repeat;
                     background-color: #fff;
                     background-size: auto 40px;
                 }
             }
             @media all and (max-width: 479px) {
                 #cabecera {
-                    background: url(http://rec.vtelca.gob.ve/img/cintillo-c.png) center no-repeat;
+                    background: url(../../resources/img/cintillo-c.png) center no-repeat;
                     background-color: #fff;
                     background-size: auto 40px;
                 }

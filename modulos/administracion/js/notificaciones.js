@@ -19,7 +19,7 @@ $(window).load(function(){
         $('#tasbla').dataTable({
             ordering: false,
             language: {
-                url: 'http://rec.vtelca.gob.ve/datatables/lang/Spanish.json'
+                url: 'Spanish.json'
             }
         });
     }).fail(function(){

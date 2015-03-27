@@ -10,16 +10,20 @@
         <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
         <link rel="stylesheet" href="../../resources/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="../../resources/css/font-awesome.min.css">
+        <script src="../../resources/js/bootstrap-switch.min.js"></script>
+        <link rel="stylesheet" href="../../resources/css/bootstrap-switch.min.css">
 
         <script src="../../resources/js/jquery.min.js"></script>
         <script src="../../resources/js/bootstrap.min.js"></script>
+        <script src="../../resources/js/bootstrap-switch.min.js"></script>
+        <link rel="stylesheet" href="../../resources/css/bootstrap-switch.min.css">
         <style>
             header {
                 width: calc(100% - 10px);
                 height: 60px;
-                background: url(http://rec.vtelca.gob.ve/img/cintillo-movilnet.png) left no-repeat,
-                url(http://rec.vtelca.gob.ve/img/logo-movilnet.gif) center no-repeat,
-                url(http://rec.vtelca.gob.ve/img/cintillo-d.png) right no-repeat;
+                background: url(../../resources/img/cintillo-movilnet.png) left no-repeat,
+                url(../../resources/img/logo-movilnet.gif) center no-repeat,
+                url(../../resources/img/cintillo-d.png) right no-repeat;
                 background-color: #fff;
                 background-size: auto 40px;
                 margin: 5px;
@@ -42,7 +46,7 @@
                 border: 0;
                 width: 100%;
                 height: calc(100% - 143px);
-                background: #fff url(http://rec.vtelca.gob.ve/img/fondo-claro.png) center no-repeat;
+                background: #fff url(../../resources/img/fondo-claro.png) center no-repeat;
                 background-size: cover;
             }
         </style>
@@ -58,15 +62,16 @@
         <link rel="stylesheet" type="text/css" href="../GestionCasos/JS/jqueryUI/css/blitzer/jquery-ui-1.10.4.custom.css">
         <script src="js/GestionOrdenAsignacion.js"></script>
         <style rel="stylesheet" type="text/css">
+            .reveal-modal{
+                left: 45%;
+                width: 850px;
+            }
+
+        </style>
     </head>
     <body>
         <!-- HEADER -->
-        .reveal-modal{
-            left: 45%;
-            width: 850px;
-        }
 
-    </style>
     <div class="container">
         <h1>Gestion de Ordenes de Asginacion (Entrada de accesorios)</h1>
         <div class="row">
@@ -77,6 +82,7 @@
             <div class="col-md-3">
                 <a href="#" style="width:100%" class="btn btn-default" id="btnNuevoAccesorio"><i class="fa fa-plus"></i> Agregar Accesorio</a>
             </div>
+
         </div>
         <hr>
         <table  class="table table-striped" id="tablaOrdenes">
