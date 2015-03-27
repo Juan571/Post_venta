@@ -295,6 +295,7 @@ class preparedsqls{
                                                         solicitudes_accesorios_inventario.descripcion as descripcion,
                                                         solicitudes_accesorios_inventario.aprobado as aprobado,
                                                         inventario.producto as producto,
+                                                        inventario_id as inventario_id,
                                                         motivos_reemplazo.motivo as motivo,
                                                         motivos_reemplazo.id as motivo_id,
                                                         seguimientos.observaciones as observaciones
@@ -325,7 +326,7 @@ class preparedsqls{
                                                                                 ".$accesorios['motivo']."   
                                                                             </div>
                                                                             <div class=' make-switch col-lg-2'>
-                                                                                <input data-text=".$accesorios['id']." id=btnsw".$accesorios['id']." class ='btnsw btn$idcaso' type='checkbox' data-off-color='danger' data-on-color='info' data-size='large' data-on-text='' data-off-text='' $aprob>
+                                                                                <input data-text=".$accesorios['id']." data-inventario_id='".$accesorios["inventario_id"]."' data-motivo='".$accesorios["motivo_id"]."' id=btnsw".$accesorios['id']." class ='btnsw btn$idcaso' type='checkbox' data-off-color='danger' data-on-color='info' data-size='large' data-on-text='' data-off-text='' $aprob>
                                                                                 
                                                                             </div>
                                                                             <div class='col-lg-4'>

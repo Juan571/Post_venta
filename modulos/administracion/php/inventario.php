@@ -136,6 +136,25 @@ switch ($accion) {
         echo $ejecuta->obtenerOrdenesAsig();
 
         break;
+    case "aceptarAccesorioOrden":
+        $idOrdAsig = $_REQUEST["idOrdAsig"];
+        $estatus = $_REQUEST["estatus"];
+
+        $id = $_REQUEST["id"];
+        $cant = $_REQUEST["cant"];
+        $DetInv = $_REQUEST["DetInv"];
+
+        $sql = "UPDATE orden_asignaciones SET estatus= $estatus where id= $idOrdAsig";
+        $res = $hAccesorios->prepare($sql);
+        $res->execute();
+        $arr = array();
+
+        foreach ($id as $k=>$v) {
+            $sql = "UPDATE "
+            $arr[]  = $v."-".$cant[$k]."-".$DetInv[$k];
+        }
+        print json_encode($arr);
+        break;
     case "setCantidadAccesorios":
         $id = $_REQUEST["id"];
         $cant = $_REQUEST["cant"];

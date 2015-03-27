@@ -18,6 +18,7 @@ var cambiarDiseno['iDisplayLength'];
 */
 
 function crearTh(datos,tabla){
+  var tablatemp=tabla;
   var tabla=tabla;
   var classOpc ="indice";
   var indice=null;
@@ -39,7 +40,11 @@ function crearTh(datos,tabla){
               $(tabla).append(th);
         //    $(tabla).append("<th style=\"padding-left: 4px;padding-right: 4px;padding-top: 2px;padding-bottom: 2px;\">"+v+"</th>");
           });
-          $(tabla).append("<th>Accion</th>");
+
+        if (tablatemp=="#tablaAccesoriosOrden")
+            $(tabla).append("<th>Recibido</th>");
+        else
+            $(tabla).append("<th>Accion</th>");
          }
 
 function cargarTablas(action,data,tabla,cambiarDiseno,columnasvisibles,url,urlIdioma){
@@ -185,14 +190,18 @@ function cargarTablas(action,data,tabla,cambiarDiseno,columnasvisibles,url,urlId
                         });
                         $(btnEmpleado).parent().attr('style','text-align:center');
                     }
+
                     if(tabla==="#tablaAccesoriosOrden"){
                         var boton = $(nRow).find(".botonRow");
                         var btnEmpleado = $(nRow).find(".botonRow");
+                        $(nRow).attr("data-id",aData[0])
+                        $(nRow).addClass("trAccesorios");
+                        if (aData[4]=='1'){
 
-                        $(btnEmpleado).removeClass("btn-primary").parent().html(" <div class=' make-switch col-lg-2'><input data-text='' id=btnsw class ='btnsw btn' type='checkbox' data-off-color='danger' data-on-color='info' data-size='large' data-on-text='' data-off-text='' > </div>");
-                        $(btnEmpleado).addClass("btn-info");
-                        $(btnEmpleado).off();// Se elimina el Evento anterior
-
+                            $(btnEmpleado).removeClass("btn-primary").parent().html("<div class=' make-switch col-lg-2'><input data-text='"+aData[1]+"' data-id='"+aData[7]+"' id=btnsw class ='btnsw btn' type='checkbox' data-off-color='danger' data-on-color='info' data-size='large' data-on-text='' data-off-text='' checked disabled> </div>");
+                        }else{
+                            $(btnEmpleado).removeClass("btn-primary").parent().html("<div class=' make-switch col-lg-2'><input data-text='"+aData[1]+"' data-id='"+aData[7]+"' id=btnsw class ='btnsw btn' type='checkbox' data-off-color='danger' data-on-color='info' data-size='large' data-on-text='' data-off-text='' > </div>");
+                        }
                         $(btnEmpleado).parent().attr('style','text-align:center');
                     }
                     if(tabla==="#tabla_ofc"){
@@ -211,9 +220,11 @@ function cargarTablas(action,data,tabla,cambiarDiseno,columnasvisibles,url,urlId
                 },
 
                 "fnDrawCallback": function () {
-                    $(".btnsw").bootstrapSwitch();
-                    $('.bootstrap-switch-handle-on').attr("class", "glyphicon glyphicon-ok-sign bootstrap-switch-handle-on bootstrap-switch-info");
-                    $('.bootstrap-switch-handle-off').attr("class", "glyphicon glyphicon-remove bootstrap-switch-handle-on bootstrap-switch-danger");
+                    if(tabla==="#tablaAccesoriosOrden"){
+                        $(".btnsw").bootstrapSwitch();
+                        $('.bootstrap-switch-handle-on').attr("class", "glyphicon glyphicon-ok-sign bootstrap-switch-handle-on bootstrap-switch-info");
+                        $('.bootstrap-switch-handle-off').attr("class", "glyphicon glyphicon-remove bootstrap-switch-handle-on bootstrap-switch-danger");
+                    }
 
                     var tabla1 = $(tabla).DataTable();
                      var cadenatabla = tabla + " tbody";

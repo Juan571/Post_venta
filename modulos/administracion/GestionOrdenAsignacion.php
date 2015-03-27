@@ -117,7 +117,7 @@
                 </div>
 
             </div>
-            <div class="row">
+            <div style="margin-bottom: 2%" class="row">
 
                 <div class="col-md-12">
                     <strong>Observacion </strong><br>
@@ -126,7 +126,7 @@
 
             </div>
 
-            <table  class="table table-striped" id="tablaAccesoriosOrden">
+            <table   class="table table-striped" id="tablaAccesoriosOrden">
 
             </table>
             <hr>

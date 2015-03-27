@@ -60,14 +60,19 @@
                     $id = $accesorios[$i][1];
                     $aprobd = $accesorios[$i][0];
                     $obser = $accesorios[$i][2];
-                     
-                        
+                    $motivo_id=$accesorios[$i][3];
+                    $inventario_id=$accesorios[$i][4];
+
                     if($aprobd=='true'){
                         $todosAccAprob = true;
                         $sql = ("INSERT INTO seguimientos VALUES (null,now(), 2, $idcaso, '$obser','0','$id');"); 
                         $ejecuta->ejecutar($sql,$action);
                         $sql = ("UPDATE solicitudes_accesorios_inventario SET aprobado=1 WHERE id=$id"); 
                         $ejecuta->ejecutar($sql,$action);
+                        if ($motivo_id!=3){
+                            $sql=("INSERT into devoluciones VALUES(null, $modelo_id, $inventario_id, now(), $idcaso);");
+                            $ejecuta->ejecutar($sql,$action);
+                        }
                     }
                     else{
                         $sql = ("INSERT INTO seguimientos VALUES (null,now(), 6, $idcaso, '$obser','0','$id');"); 

@@ -64,6 +64,8 @@ function selectAgencia(data){
         ncasos = $($(".btn"+idcaso)).length;
         obsercaso = "";
         modelo = $(this).attr("data-modelo");
+        motivo_id="";
+        inventario_id="";
         observacionesvacio=false;
                 var accesorios=[];
                 var caso={};
@@ -72,11 +74,14 @@ function selectAgencia(data){
                 caso["casoid"]=idcaso;
                 
                 for (i=0;i< ncasos;i++){
+                    motivo_id=$($(".btn"+idcaso)[i]).attr("data-motivo");
+                    inventario_id=$($(".btn"+idcaso)[i]).attr("data-inventario_id");
+                    console.log("MOTIVO->"+motivo_id);
                    //console.log($($(".btn"+idcaso)[i]).bootstrapSwitch('state'));
                    $("#"+$($(".btn"+idcaso)[i]).attr("data-text")).attr( "style","");
                    if ($($(".btn"+idcaso)[i]).bootstrapSwitch('state')){
                         obsercaso = $("#"+$($(".btn"+idcaso)[i]).attr("data-text")).val();    
-                        accesorios[i]=[true,$($(".btn"+idcaso)[i]).attr("data-text"),""];
+                        accesorios[i]=[true,$($(".btn"+idcaso)[i]).attr("data-text"),"", motivo_id, inventario_id];
                    
                    }
                    else{
@@ -85,7 +90,7 @@ function selectAgencia(data){
                             observacionesvacio=true;
                            $("#"+$($(".btn"+idcaso)[i]).attr("data-text")).attr("style",'border-color: red;border-width: 2px;')
                         }
-                        accesorios[i]=[false,$($(".btn"+idcaso)[i]).attr("data-text"),obsercaso.replace(/^\s+|\s+$/gm,'')];
+                        accesorios[i]=[false,$($(".btn"+idcaso)[i]).attr("data-text"),obsercaso.replace(/^\s+|\s+$/gm,''), motivo_id];
                    }
                 }
                 caso["accesorios"]=accesorios;
@@ -95,7 +100,7 @@ function selectAgencia(data){
                 }
                 else{
                     if (confirm('¿Esta seguro que desea procesar este caso?, no se prodrá deshacer esta acción..')) {
-                        console.log(caso);
+                        //console.log(caso);
                         ajax(caso);
                     } else {
                         // Do nothing!

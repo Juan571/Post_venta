@@ -17,7 +17,55 @@ $(window).load(function(){
 });/**
  * Created by juan on 24/03/15.
  */
+function aceptarAccesoriosOrdenes(idOrden){
+    strId = '';
+    strCant = '';
+    strDetInv = '';
+    orden = '';
+    incompleto = false;
+    activo = false;
+    urlSetCantidadAccesorios='';
 
+    observacionOrden = $("#txtOrdenObservacion").val();
+    $('.trAccesorios').each(function() {
+        var sw= $(this).find(".btnsw");
+
+        id = $(this).attr('data-id');
+        cantidad = sw.attr("data-id");
+        idDetalleInv =  sw.attr("data-text");
+
+        if(sw.bootstrapSwitch('state')){
+            activo = true;
+            strId += '&id[]=' + id;
+            strCant +='&cant[]='+cantidad;
+            strDetInv +='&DetInv[]='+idDetalleInv;
+        }
+        else{
+            incompleto=true;
+        }
+
+    });
+
+    if (activo){
+
+        if (incompleto){////incompleto
+            alert("Este Caso quedara incompleto");
+            urlAceptarAccesoriosOrden = url+'?accion=aceptarAccesorioOrden&estatus=2&idOrdAsig='+idOrden+strId+strCant+strDetInv;
+           // console.log(urlSetCantidadAccesorios);
+        }
+        else{//procesado
+            urlAceptarAccesoriosOrden = url+'?accion=aceptarAccesorioOrden&estatus=3&idOrdAsig='+idOrden+strId+strCant+strDetInv;
+
+            alert("Este Caso pasará a proesado");
+        }
+         console.log(urlAceptarAccesoriosOrden);
+        $.getJSON(urlAceptarAccesoriosOrden, function(json) {
+            console.log('setCantidadAccesorios', json);
+
+        });
+    }
+
+}
 function detallesOrdenAsignacion(aData){
 
     $("#txtOrdenAsignacion").text(aData[2]);
@@ -29,7 +77,10 @@ function detallesOrdenAsignacion(aData){
         $("#tablaAccesoriosOrden thead > tr >  th").hide();
     }
 
-    cargarTablas("getAccesoriosOrden",aData[0], "#tablaAccesoriosOrden", null, [0,1,2,3,4],"../administracion/php/inventario.php","../GestionCasos/");
+    cargarTablas("getAccesoriosOrden",aData[0], "#tablaAccesoriosOrden", null, [],"../administracion/php/inventario.php","../GestionCasos/");
     $('#btnmodal').trigger('click');
-
+    $("#btnAceptarEntradaAccesorios").on("click",function(){
+        $(this).off();
+        aceptarAccesoriosOrdenes(aData[0]);
+    });
 }
