@@ -5,14 +5,14 @@
         <title>Servicio Post Venta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="http://rec.vtelca.gob.ve/img/favicon.ico">
+        <link rel="shortcut icon" href="resources/img/favicon.ico">
 
-        <link rel="stylesheet" href="http://rec.vtelca.gob.ve/bootstrap/3.1.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="http://rec.vtelca.gob.ve/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="http://rec.vtelca.gob.ve/font-awesome/4.1.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+        <link rel="stylesheet" href="resources/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="resources/css/font-awesome.min.css">
         
-        <script src="http://rec.vtelca.gob.ve/jquery/2.1.1/jquery.min.js"></script>
-        <script src="http://rec.vtelca.gob.ve/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="resources/js/jquery.min.js"></script>
+        <script src="resources/js/bootstrap.min.js"></script>
         <style>
             header {
                 width: calc(100% - 10px);

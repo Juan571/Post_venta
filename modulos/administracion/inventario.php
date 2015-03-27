@@ -1,10 +1,60 @@
-<?php include "../../includes/header.php"; ?>
-        <script src="http://rec.vtelca.gob.ve/datatables/1.10.2/media/js/jquery.dataTables.min.js"></script>
-        <link rel="stylesheet" href="http://rec.vtelca.gob.ve/datatables/1.10.2/media/css/jquery.dataTables.css">
-        <script src="http://rec.vtelca.gob.ve/reveal/1.0/jquery.reveal.js"></script>
-        <link rel="stylesheet" href="http://rec.vtelca.gob.ve/reveal/1.0/reveal.css">
-        <script src="http://rec.vtelca.gob.ve/jquery-ui/1.10.3/ui/jquery-ui.js"></script>
-        <link rel="stylesheet" href="http://rec.vtelca.gob.ve/jquery-ui/1.10.3/themes/base/jquery.ui.all.css">
+<?php if (!isset($_SESSION)) session_start(); ?>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Servicio Post Venta</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../../resources/img/favicon.ico">
+
+        <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../resources/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="../../resources/css/font-awesome.min.css">
+
+        <script src="../../resources/js/jquery.min.js"></script>
+        <script src="../../resources/js/bootstrap.min.js"></script>
+        <style>
+            header {
+                width: calc(100% - 10px);
+                height: 60px;
+                background: url(http://rec.vtelca.gob.ve/img/cintillo-movilnet.png) left no-repeat,
+                url(http://rec.vtelca.gob.ve/img/logo-movilnet.gif) center no-repeat,
+                url(http://rec.vtelca.gob.ve/img/cintillo-d.png) right no-repeat;
+                background-color: #fff;
+                background-size: auto 40px;
+                margin: 5px;
+                border-bottom: 4px solid #f00;
+            }
+            footer {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                text-align: center;
+                width: 100%;
+                border-top: 1px solid #f00;
+                height: 21px;
+                line-height: 20px;
+                background-color: #fff;
+                font-size: 12px;
+            }
+            #objMain {
+                position: absolute;
+                border: 0;
+                width: 100%;
+                height: calc(100% - 143px);
+                background: #fff url(http://rec.vtelca.gob.ve/img/fondo-claro.png) center no-repeat;
+                background-size: cover;
+            }
+        </style>
+    </head>
+    <body>
+    <!-- HEADER -->
+        <script src="../../resources/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" href="../../resources/css/jquery.dataTables.css">
+        <script src="../../resources/reveal/jquery.reveal.js"></script>
+        <link rel="stylesheet" href="../../resources/reveal/reveal.css">
+        <script src="../../resources/ui/jquery-ui.js"></script>
+        <link rel="stylesheet" href="../../resources/themes/base/jquery.ui.all.css">
         <link rel="stylesheet" type="text/css" href="../GestionCasos/dataTables/media/css/jquery.dataTables.css">
         <script type="text/javascript" src="../GestionCasos/JS/tablas.js"></script>
 
