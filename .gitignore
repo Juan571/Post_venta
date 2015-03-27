@@ -11,7 +11,6 @@ nbproject/
 tmp/*
 includes/conexion.php
 .idea/*
-<<<<<<< HEAD
 includes/parametrosBD.php
-=======
->>>>>>> 5b692dd06d40ebc66e0010d3d7d35ccfb3cba884
+.flooignore
+.floo

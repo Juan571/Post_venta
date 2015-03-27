@@ -12,12 +12,6 @@ $(window).load(function(){
 
         console.log("hola");
 
-        //$("#entradaAccesorios").modal('toggle');
-
-
-        //$('#entradaAccesorios').foundation('reveal', 'open');
-        //alert("VER DETALLES xD");
-        //selectAgencia(aData);
     });
 
 });/**
